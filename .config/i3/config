@@ -1,0 +1,183 @@
+# vim: filetype=conf
+
+# Mod key
+set $mod Mod4
+
+# Gaps
+gaps inner 10
+gaps outer 0
+
+# Fonts
+font pango: SourceCodePro SemiBold 10
+
+# Set border width
+for_window [class="^.*"] border pixel 2
+
+# Set border colors
+# class                 border  backgr. text    indicator
+client.focused          #000000 #007fff #ffffff #00ffbb
+client.focused_inactive #333333 #5f676a #ffffff #484e50
+client.unfocused        #333333 #222222 #888888 #292d2e
+client.urgent           #2f343a #900000 #ffffff #900000
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Kill focused window
+bindsym $mod+q kill
+
+# Lock screen
+bindsym $mod+x exec --no-startup-id betterlockscreen -l dimblur
+
+# Start dmenu (a program launcher)
+bindsym $mod+d exec --no-startup-id rofi -show drun
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Split in vertical orientation
+bindsym $mod+v split v
+
+# Split in horizontal orientation
+bindsym $mod+shift+v split h
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+w layout tabbed
+bindsym $mod+Shift+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+
+set $ws1 "1: ☕"
+set $ws2 "2: >_"
+set $ws3 "3: 🌍"
+set $ws4 "4: ☻"
+set $ws5 "5: ♫"
+set $ws6 "6: ⭳"
+set $ws7 "7: 🎥"
+set $ws8 "8: Other"
+set $ws9 "9: Other"
+set $ws10 "10: Other"
+
+# Start a apps
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+bindsym $mod+b exec --no-startup-id chromium
+bindsym $mod+z exec --no-startup-id franz
+bindsym $mod+s exec --no-startup-id  spotify
+bindsym $mod+r exec --no-startup-id  st ranger
+bindsym --release Print exec --no-startup-id  flameshot gui
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+assign [class="Chromium"] $ws3
+assign [class="Franz"] $ws4 
+assign [class="ktorrent"] $ws6
+
+for_window [class="Spotify"] floating enable
+for_window [class="Spotify"] resize set 1600 900
+for_window [class="Spotify"] move position center
+for_window [class="Spotify"] move to workspace $ws5
+for_window [class="Franz"] floating enable
+for_window [class="Franz"] resize set 1600 900
+for_window [class="Franz"] move position center
+for_window [class="Chromium"] focus
+for_window [class="st"] focus
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+Escape exec i3-msg exit
+
+
+# Resize window (you can also use the mouse for that)
+
+bindsym $mod+Shift+y resize shrink width 5 px or 5 ppt
+bindsym $mod+Shift+u resize grow height 5 px or 5 ppt
+bindsym $mod+Shift+i resize shrink height 5 px or 5 ppt
+bindsym $mod+Shift+o resize grow width 5 px or 5 ppt
+
+## Plasma Integration
+# Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
+exec --no-startup-id wmctrl -c Plasma
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
+
+## Avoid tiling popups, dropdown windows from plasma
+# for the first time, manually resize them, i3 will remember the setting for floating windows
+
+for_window [class="plasmashell"] floating enable
+for_window [class="plasmashell"] border none
+for_window [class="Plasma"] floating enable
+for_window [class="Plasma"] border none
+for_window [title="plasma-desktop"] floating enable
+for_window [title="plasma-desktop"] border none
+for_window [title="win7"] floating enable
+for_window [title="win7"] border none
+for_window [class="krunner"] floating enable
+for_window [class="krunner"] border none
+for_window [class="Kmix"] floating enable
+for_window [class="Kmix"] border none
+for_window [class="Klipper"] floating enable
+for_window [class="Klipper"] border none
+for_window [class="Plasmoidviewer"] floating enable
+for_window [class="Plasmoidviewer"] border none
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="pop-up"] border none
+for_window [window_role="task_dialog"] border none
+for_window [window_type="dialog"] border none
+for_window [window_type="menu"] border none
+
+# Startup
+
+exec --no-startup-id flameshot
+exec --no-startup-id compton --config /home/stefan/.config/compton.config -f 
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/3dfractal-1528375303163-781.jpg
