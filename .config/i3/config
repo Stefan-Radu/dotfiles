@@ -180,4 +180,4 @@ for_window [window_type="menu"] border none
 
 exec --no-startup-id flameshot
 exec --no-startup-id compton --config /home/stefan/.config/compton.config -f 
-exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/3dfractal-1528375303163-781.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/deer_minimal.jpg
