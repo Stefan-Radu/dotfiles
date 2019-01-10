@@ -96,6 +96,7 @@ fi
 
 # Custom
 
+alias vim="nvim"
 alias space="ncdu"
 alias chrome="chromium"
 alias diskm="udisksctl mount -b"
