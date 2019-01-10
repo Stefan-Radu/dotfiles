@@ -4,54 +4,45 @@ call plug#begin('~/.vim/plugged')
 
 " UTILITIES=====================================================================
 
-Plug 'tpope/vim-markdown'
-Plug 'scrooloose/syntastic'
-Plug 'valloric/youcompleteme'
-Plug 'pangloss/vim-javascript'
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'neomake/neomake' " Linting
+Plug 'tpope/vim-fugitive' " Git wrapper
+Plug 'tpope/vim-markdown' " Markdown syntax
+Plug 'scrooloose/nerdtree' " File treeview
+Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
+Plug 'valloric/youcompleteme' " Code completion
 
 " FUNCTIONALITY=================================================================
 
-Plug 'tpope/vim-repeat' "Repeate actions
-Plug 'tpope/vim-commentary' "For comments -> gc
-Plug 'kana/vim-textobj-user' "TxtObj utility
-Plug 'kana/vim-textobj-entire' "Entire textojb -> ie / ae
-Plug 'kana/vim-textobj-line' "Line TextObj -> il / al
-Plug 'suan/vim-instant-markdown' "Preview markdown
+Plug 'tpope/vim-repeat' " Repeate actions
+Plug 'tpope/vim-commentary' " For comments -> gc
+Plug 'kana/vim-textobj-user' " TxtObj utility
+Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
+Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
+Plug 'euclio/vim-markdown-composer' " Markdown preview
 
 " CUSTOMIZTION=================================================================
 
-Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline' " Airline status
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'nanotech/jellybeans.vim'
+Plug 'nanotech/jellybeans.vim' " The theme
 
 call plug#end ()
 "}}}
 
 " PLUGINS SETTINGS=============================================================={{{
 
-" Syntastic{{{
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_check_on_wq = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_cpp_checkers = ['gcc']
-let g:syntastic_cpp_compiler_options = ' -std=c++17'
-
-"}}}
-
 " Jellybeans{{{
+
 let g:jellybeans_use_term_italics = 1
 let g:jellybeans_overrides = {
 \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
 \}
+
 "}}}
 
 " Ycm{{{
+
 let g:ycm_auto_trigger = 1
 let g:ycm_keep_logfiles = 1
 let g:ycm_max_num_candidates = 7 
@@ -66,9 +57,11 @@ let g:ycm_semantic_triggers =  { 'cpp' : [' -> ', '.', '::', 're!gl', 're!GLFW',
 let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 set completeopt-=preview
+
 "}}}
 
 " Airline{{{
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'unicode'
@@ -90,70 +83,77 @@ let g:airline_symbols.maxlinenr = ''
 "}}}
 
 " NerdTree{{{
-" map <C-t> :NERDTreeToggle<CR>
+
+map <C-t> :NERDTreeToggle<CR>
+
+"}}}
+
+" NeoMake{{{
+
+call neomake#configure#automake('rnw')
+
+"}}}
+
+" Polyglot {{{
+
+let g:polyglot_disabled = ['markdown']
+
 "}}}
 
 "}}}
 
 " THEME SETTINGS================================================================{{{
-syntax on
-set background=dark
-colorscheme jellybeans 
-"}}}
 
-" DEFINITIONS==================================================================={{{
-autocmd FileType cpp set keywordprg=:!cppman
+syntax on
+colorscheme jellybeans 
+
 "}}}
 
 " COMMON SETTINGS==============================================================={{{
 
-set list
-set shiftround
-set encoding=utf-8
-set listchars=tab:\ \ ,eol:¬
-set wildmenu
+" Search
+set hlsearch
+set incsearch
+set smartcase
+set ignorecase 
+set infercase
+
+" Search hightlight color
+hi Search cterm=NONE ctermfg=black ctermbg=blue 
+
+" Spaces and tabs 
 set tabstop=2
 set softtabstop=2
-set expandtab
+set expandtab " Use spaces insted of tabs
+set shiftround " Use multiples of shiftwidth when << >> 
 set shiftwidth=2
+
+" UI config
+set mouse=a
 set number
 set relativenumber
 set showcmd
-set autoread
-set autoindent
-set cindent
-set incsearch
-set hlsearch
-set ignorecase 
-set smartcase
-set infercase
-set cursorline
-set nobackup
-set noswapfile
+set list
+set listchars=tab:\ \ ,eol:¬ " End of line character
+set cursorline " Highlight current line
+set wildmenu
+set lazyredraw
+set encoding=utf-8
 set hidden
-let @/ = ""
-set cinoptions+=g0
-set cpoptions+=x
-au FileType * set fo-=c fo-=r fo-=o
-hi Search cterm=NONE ctermfg=black ctermbg=darkcyan
 autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
 
-" for gvim
+" Don't backup
+set nobackup
+set noswapfile
 
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
-set guifont=Fantasque\ Sans\ Mono\ 13
+" Indentation
+filetype indent on
+set cinoptions+=g0
+set cpoptions+=x
 
-"}}}
-
-" FOLDING======================================================================={{{
-
+" Folding
 set foldlevelstart=0
 set foldmethod=marker
-
-nnoremap <Leader>z zzzMza
 
 function! MyFoldText() " 
     let line = getline(v:foldstart)
@@ -177,60 +177,89 @@ set foldtext=MyFoldText()
 
 " MAPINGS======================================================================={{{
 
-inoremap <S-Tab> <C-D> 
+" Bye arrows
+" imap <Up> <Nop>
+" imap <Down> <Nop>
+" imap <Left> <Nop>
+" imap <Right> <Nop>
+nmap <Up> <Nop>
+nmap <Down> <Nop>
+nmap <Left> <Nop>
+nmap <Right> <Nop>
 
-map <Up> <Nop>
-map <Down> <Nop>
-map <Left> <Nop>
-map <Right> <Nop>
-
+" Resize buffer
 nnoremap <Leader>rr <C-w>=
 nnoremap <Leader>rd :vertical resize 150 <CR> 
 nnoremap <Leader>rs :vertical resize 59 <CR> 
+map <F8> <C-w>v<C-l><C-w>s<C-h><Leader>rd
 
+" Save and quit 
 nnoremap <Leader>d :bn <CR> :bd# <CR> 
 nnoremap <Leader>w :wall<CR>
-nnoremap <Leader>q :wq<CR>
-nnoremap <Leader>Q :wqall<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap Q :qall!<CR>
 
-nnoremap <Leader>s :%s///g<left><left>
-cnoremap :: <C-c>
-
+" Search
 nnoremap * *<c-o>
 nnoremap n nzz
 nnoremap N Nzz
+nnoremap <Leader>s :%s///g<left><left>
+
+" Cancel command
+cnoremap :: <C-c>
+
+" Close folds
 nnoremap <Space> za
 
-nnoremap <Leader>v "+p
-nnoremap <Leader>c "+y
+" Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
 
+" Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
+" Go to first character in line
 nnoremap H ^
+
+" Go to last character in line
 nnoremap L g_
 
+" Clear search highlight
 nnoremap <silent> <Leader><Space> :noh<CR>
-map <F8> <C-w>v<C-l><C-w>s<C-h><Leader>rd
 
-autocmd filetype cpp map <F5> diei// By Stefan Radu<CR><CR>#include <algorithm><CR>#include <iostream><CR>#include <iomanip><CR>#include <cassert><CR>#include <vector><CR>#include <string><CR>#include <cctype><CR>#include <queue><CR>#include <deque><CR>#include <cmath><CR>#include <map><CR>#include <set><CR><CR>using namespace std;<CR><CR>#define sz(x) (int)(x).size ()<CR><CR>typedef pair < int, int > pii;<CR>typedef long long ll;<CR>typedef long double ld;<CR>typedef unsigned int ui;<CR>typedef unsigned long long ull;<CR><CR>int main () {<CR><CR>ios::sync_with_stdio (false);<CR>cin.tie (0);cout.tie (0);<CR><CR>freopen ("input", "r", stdin);<CR>freopen ("output", "w", stdout);<CR>}<ESC><ESC>k
-
+" Navigate windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nnoremap <C-n> :bn<CR>
-nnoremap <C-p> :bp<CR>
+" Don't jump lines when wrapped
+nnoremap j gj
+nnoremap k gk
 
-nnoremap Q :qall!<CR>
+" Next buffer
+nnoremap <Tab> :bn<CR> 
+
+" Previous buffer
+nnoremap <S-Tab> :bp<CR>
+
+" Reset to default c++ file
+autocmd filetype cpp map <F5> diei// By Stefan Radu<CR><CR>#include <algorithm><CR>#include <iostream><CR>#include <iomanip><CR>#include <cassert><CR>#include <vector><CR>#include <string><CR>#include <cctype><CR>#include <queue><CR>#include <deque><CR>#include <cmath><CR>#include <stack><CR>#include <map><CR>#include <set><CR><CR>using namespace std;<CR><CR>#define sz(x) (int)(x).size ()<CR><CR>typedef pair < int, int > pii;<CR>typedef long long ll;<CR>typedef long double ld;<CR>typedef unsigned int ui;<CR>typedef unsigned long long ull;<CR><CR>int main () {<CR><CR>ios::sync_with_stdio (false);<CR>cin.tie (0);cout.tie (0);<CR><CR>freopen ("input", "r", stdin);<CR>freopen ("output", "w", stdout);<CR>}<ESC><ESC>k
+
 "}}}
 
 " COMPILE======================================================================{{{
 
 set shell=/bin/bash
-autocmd filetype cpp nnoremap <F9> :wall <CR>:! clear && g++ -std=c++14 -O2 -pedantic -Wall -Wfatal-errors main.cpp -o main && TIMEFORMAT='\%3R' && time ./main <CR>
+autocmd filetype cpp nnoremap <F9> :wall <CR>:! g++ -std=c++14 -O2 -pedantic -Wall -Wfatal-errors main.cpp -o main && TIMEFORMAT='\%3R' && time ./main <CR>
 
-autocmd filetype cpp nnoremap <F10> :wall <CR>:! clear && TIMEFORMAT='\%3R' && time ./main <CR>
+autocmd filetype cpp nnoremap <F10> :wall <CR>:! TIMEFORMAT='\%3R' && time ./main <CR>
 
-autocmd filetype cpp nnoremap <F11> :wall <CR>:! clear && g++ -std=c++14 -O2 -pedantic -Wall -Wfatal-errors % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR>
+autocmd filetype cpp nnoremap <F11> :wall <CR>:! g++ -std=c++14 -O2 -pedantic -Wall -Wfatal-errors % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR>
 
-autocmd filetype python nnoremap <F9> :wall <CR>:! clear && TIMEFORMAT='\%3R' && time python %<CR>
+autocmd filetype python nnoremap <F9> :wall <CR>:! TIMEFORMAT='\%3R' && time python %<CR>
 "}}}
