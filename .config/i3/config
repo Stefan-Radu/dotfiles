@@ -1,5 +1,3 @@
-# vim: filetype=conf
-
 # Mod key
 set $mod Mod4
 
@@ -180,4 +178,4 @@ for_window [window_type="menu"] border none
 
 exec --no-startup-id flameshot
 exec --no-startup-id compton --config /home/stefan/.config/compton.config -f 
-exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/deer_minimal.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/raven_flying.jpg
