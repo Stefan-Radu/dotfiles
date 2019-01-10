@@ -9,7 +9,7 @@ Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'tpope/vim-markdown' " Markdown syntax
 Plug 'scrooloose/nerdtree' " File treeview
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
-Plug 'valloric/youcompleteme' " Code completion
+Plug 'zxqfl/tabnine-vim'
 
 " FUNCTIONALITY=================================================================
 
@@ -141,13 +141,13 @@ set lazyredraw
 set encoding=utf-8
 set hidden
 autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Don't backup
 set nobackup
 set noswapfile
 
 " Indentation
-filetype indent on
 set cinoptions+=g0
 set cpoptions+=x
 
@@ -248,7 +248,7 @@ nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
 
 " Reset to default c++ file
-autocmd filetype cpp map <F5> diei// By Stefan Radu<CR><CR>#include <algorithm><CR>#include <iostream><CR>#include <iomanip><CR>#include <cassert><CR>#include <vector><CR>#include <string><CR>#include <cctype><CR>#include <queue><CR>#include <deque><CR>#include <cmath><CR>#include <stack><CR>#include <map><CR>#include <set><CR><CR>using namespace std;<CR><CR>#define sz(x) (int)(x).size ()<CR><CR>typedef pair < int, int > pii;<CR>typedef long long ll;<CR>typedef long double ld;<CR>typedef unsigned int ui;<CR>typedef unsigned long long ull;<CR><CR>int main () {<CR><CR>ios::sync_with_stdio (false);<CR>cin.tie (0);cout.tie (0);<CR><CR>freopen ("input", "r", stdin);<CR>freopen ("output", "w", stdout);<CR>}<ESC><ESC>k
+autocmd filetype cpp map <F5> diei// By Stefan Radu<CR><CR>#include <algorithm><CR>#include <iostream><CR>#include <iomanip><CR>#include <cassert><CR>#include <vector><CR>#include <string><CR>#include <cctype><CR>#include <queue><CR>#include <deque><CR>#include <cmath><CR>#include <stack><CR>#include <map><CR>#include <set><CR><CR>using namespace std;<CR><CR>#define sz(x) (int)(x).size()<CR><CR>typedef pair < int, int > pii;<CR>typedef long long ll;<CR>typedef long double ld;<CR>typedef unsigned int ui;<CR>typedef unsigned long long ull;<CR><CR>int main() {<CR><CR>ios::sync_with_stdio(false);<CR>cin.tie(0);cout.tie(0);<CR><CR>freopen("input", "r", stdin);<CR>freopen("output", "w", stdout);<CR>}<ESC><ESC>k
 
 "}}}
 
