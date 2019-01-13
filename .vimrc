@@ -90,7 +90,7 @@ map <C-t> :NERDTreeToggle<CR>
 
 " NeoMake{{{
 
-call neomake#configure#automake('nrwi')
+call neomake#configure#automake('nrw')
 
 "}}}
 
