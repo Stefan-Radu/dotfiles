@@ -9,7 +9,7 @@ Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'tpope/vim-markdown' " Markdown syntax
 Plug 'scrooloose/nerdtree' " File treeview
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
-Plug 'zxqfl/tabnine-vim'
+Plug 'valloric/youcompleteme'
 
 " FUNCTIONALITY=================================================================
 
@@ -28,6 +28,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'nanotech/jellybeans.vim' " The theme
 
 call plug#end ()
+
 "}}}
 
 " PLUGINS SETTINGS=============================================================={{{
