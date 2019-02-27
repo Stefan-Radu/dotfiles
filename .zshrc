@@ -74,9 +74,9 @@ source $ZSH/oh-my-zsh.sh
 # Preferred editor for local and remote sessions
 
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='nvim'
 else
-  export EDITOR='vim'
+  export EDITOR='nvim'
 fi
 
 # Compilation flags
@@ -97,11 +97,7 @@ fi
 # Custom
 
 alias vim="nvim"
-alias space="ncdu"
 alias chrome="chromium"
-alias diskm="udisksctl mount -b"
-alias disku="udisksctl unmount -b"
-alias diskpo="udisksctl power-off -b"
 alias .f="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 setopt rm_star_silent
