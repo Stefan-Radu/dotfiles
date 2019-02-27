@@ -9,7 +9,8 @@ Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'tpope/vim-markdown' " Markdown syntax
 Plug 'scrooloose/nerdtree' " File treeview
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
-Plug 'valloric/youcompleteme'
+" Plug 'valloric/youcompleteme' " Autocompleter
+Plug 'shougo/deoplete.nvim' " Autocompleter
 
 " FUNCTIONALITY=================================================================
 
@@ -18,7 +19,7 @@ Plug 'tpope/vim-commentary' " For comments -> gc
 Plug 'kana/vim-textobj-user' " TxtObj utility
 Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
 Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
-Plug 'euclio/vim-markdown-composer' " Markdown preview
+Plug 'iamcco/markdown-preview.vim' " Markdown preview
 
 " CUSTOMIZTION=================================================================
 
@@ -91,13 +92,21 @@ map <C-t> :NERDTreeToggle<CR>
 
 " NeoMake{{{
 
-call neomake#configure#automake('nrw')
+call neomake#configure#automake('rw')
 
 "}}}
 
-" Polyglot {{{
+" Polyglot{{{
 
 let g:polyglot_disabled = ['markdown']
+
+"}}}
+
+" Deoplete{{{
+
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><Tab>  pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 "}}}
 
@@ -189,7 +198,7 @@ nmap <Left> <Nop>
 nmap <Right> <Nop>
 
 " Resize buffer
-nnoremap <Leader>rr <C-w>=
+nnoremap <Leader>rr <C-w>
 nnoremap <Leader>rd :vertical resize 150 <CR> 
 nnoremap <Leader>rs :vertical resize 59 <CR> 
 map <F8> <C-w>v<C-l><C-w>s<C-h><Leader>rd
@@ -250,15 +259,18 @@ nnoremap <Tab> :bn<CR>
 " Previous buffer
 nnoremap <S-Tab> :bp<CR>
 
-" Reset to default c++ file
-autocmd filetype cpp map <F5> diei// By Stefan Radu<CR><CR>#include <algorithm><CR>#include <iostream><CR>#include <iomanip><CR>#include <cassert><CR>#include <vector><CR>#include <string><CR>#include <cctype><CR>#include <queue><CR>#include <deque><CR>#include <cmath><CR>#include <stack><CR>#include <map><CR>#include <set><CR><CR>using namespace std;<CR><CR>#define sz(x) (int)(x).size()<CR><CR>typedef pair < int, int > pii;<CR>typedef long long ll;<CR>typedef long double ld;<CR>typedef unsigned int ui;<CR>typedef unsigned long long ull;<CR><CR>int main() {<CR><CR>ios::sync_with_stdio(false);<CR>cin.tie(0);cout.tie(0);<CR><CR>freopen("input", "r", stdin);<CR>freopen("output", "w", stdout);<CR>}<ESC><ESC>k
+"}}} 
+
+" RESET TO DEFAULT C++ FILE ==================================================={{{
+
+autocmd filetype cpp map <F5> diei// By Stefan Radu<CR><CR>#include <algorithm><CR>#include <iomanip><CR>#include <cassert><CR>#include <vector><CR>#include <string><CR>#include <cctype><CR>#include <queue><CR>#include <deque><CR>#include <cmath><CR>#include <stack><CR>#include <map><CR>#include <set><CR><CR>#ifdef INFOARENA<CR>#include <fstream><CR>std::ifstream cin("txt.in");<CR>std::ofstream cout("txt.out");<CR>#else<CR>#include <iostream><CR>#endif<CR><CR>using namespace std;<CR><CR>#define sz(x) (int)(x).size()<CR><CR>typedef pair < int, int > pii;<CR>typedef long long ll;<CR>typedef long double ld;<CR>typedef unsigned int ui;<CR>typedef unsigned long long ull;<CR><CR>int main() {<CR><CR>#ifdef STEF<CR>freopen("input", "r", stdin);<CR>/*freopen("output", "w", stdout)*/;<CR>#endif<CR><CR>ios::sync_with_stdio(false);<CR>cin.tie(0);cout.tie(0);<CR><CR>}<ESC><ESC>k
 
 "}}}
 
 " COMPILE======================================================================{{{
 
 set shell=/bin/bash
-autocmd filetype cpp nnoremap <F9> :wall <CR>:! g++ -std=c++14 -O2 -pedantic -Wall -Wfatal-errors main.cpp -o main && TIMEFORMAT='\%3R' && time ./main <CR>
+autocmd filetype cpp nnoremap <F9> :wall <CR>:! g++ -std=c++14 -DSTEF -O2 -pedantic -Wall -Wfatal-errors main.cpp -o main && TIMEFORMAT='\%3R' && time ./main <CR>
 
 autocmd filetype cpp nnoremap <F10> :wall <CR>:! TIMEFORMAT='\%3R' && time ./main <CR>
 
