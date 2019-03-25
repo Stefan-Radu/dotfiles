@@ -192,6 +192,7 @@ set foldtext=MyFoldText()
 " imap <Down> <Nop>
 " imap <Left> <Nop>
 " imap <Right> <Nop>
+
 nmap <Up> <Nop>
 nmap <Down> <Nop>
 nmap <Left> <Nop>
@@ -263,18 +264,17 @@ nnoremap <S-Tab> :bp<CR>
 
 " RESET TO DEFAULT C++ FILE ==================================================={{{
 
-autocmd filetype cpp map <F5> diei// By Stefan Radu<CR><CR>#include <algorithm><CR>#include <iomanip><CR>#include <cassert><CR>#include <vector><CR>#include <string><CR>#include <cctype><CR>#include <queue><CR>#include <deque><CR>#include <cmath><CR>#include <stack><CR>#include <map><CR>#include <set><CR><CR>#ifdef INFOARENA<CR>#include <fstream><CR>std::ifstream cin("txt.in");<CR>std::ofstream cout("txt.out");<CR>#else<CR>#include <iostream><CR>#endif<CR><CR>using namespace std;<CR><CR>#define sz(x) (int)(x).size()<CR><CR>typedef pair < int, int > pii;<CR>typedef long long ll;<CR>typedef long double ld;<CR>typedef unsigned int ui;<CR>typedef unsigned long long ull;<CR><CR>int main() {<CR><CR>#ifdef STEF<CR>freopen("input", "r", stdin);<CR>/*freopen("output", "w", stdout)*/;<CR>#endif<CR><CR>ios::sync_with_stdio(false);<CR>cin.tie(0);cout.tie(0);<CR><CR>}<ESC><ESC>k
+autocmd filetype cpp map <F5> diei// By Stefan Radu<CR><CR>#include <algorithm><CR>#include <iostream><CR>#include <iomanip><CR>#include <cassert><CR>#include <vector><CR>#include <string><CR>#include <cctype><CR>#include <queue><CR>#include <deque><CR>#include <cmath><CR>#include <stack><CR>#include <map><CR>#include <set><CR><CR>using namespace std;<CR><CR>#define sz(x) (int)(x).size()<CR><CR>typedef pair < int, int > pii;<CR>typedef long long ll;<CR>typedef long double ld;<CR>typedef unsigned int ui;<CR>typedef unsigned long long ull;<CR><CR>int main() {<CR><CR>#ifdef STEF<CR>freopen("input", "r", stdin);<CR>freopen("output", "w", stdout);<CR>#endif<CR><CR>ios::sync_with_stdio(false);<CR>cin.tie(0);cout.tie(0);<CR><CR>}<ESC><ESC>k
 
 "}}}
 
 " COMPILE======================================================================{{{
 
 set shell=/bin/bash
+
 autocmd filetype cpp nnoremap <F9> :wall <CR>:! g++ -std=c++14 -DSTEF -O2 -pedantic -Wall -Wfatal-errors main.cpp -o main && TIMEFORMAT='\%3R' && time ./main <CR>
 
-autocmd filetype cpp nnoremap <F10> :wall <CR>:! TIMEFORMAT='\%3R' && time ./main <CR>
-
-autocmd filetype cpp nnoremap <F11> :wall <CR>:! g++ -std=c++14 -O2 -pedantic -Wall -Wfatal-errors % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR>
+autocmd filetype cpp nnoremap <F10> :wall <CR>:! g++ -std=c++14 -DSTEF -O2 -pedantic -Wall -Wfatal-errors % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR>
 
 autocmd filetype python nnoremap <F9> :wall <CR>:! TIMEFORMAT='\%3R' && time python %<CR>
 "}}}

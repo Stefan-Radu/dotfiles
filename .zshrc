@@ -79,6 +79,8 @@ else
   export EDITOR='nvim'
 fi
 
+export VISUAL='nvim'
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -97,6 +99,7 @@ fi
 # Custom
 
 alias vim="nvim"
+alias ranger="st ranger"
 alias chrome="chromium"
 alias .f="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
