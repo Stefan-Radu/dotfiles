@@ -138,7 +138,7 @@ set expandtab " Use spaces insted of tabs
 set shiftround " Use multiples of shiftwidth when << >> 
 set shiftwidth=2
 
-" LineBreak
+" LineBreaking
 set wrap
 set linebreak
 
