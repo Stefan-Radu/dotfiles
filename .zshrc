@@ -99,7 +99,6 @@ export VISUAL='nvim'
 # Custom
 
 alias vim="nvim"
-alias ranger="st ranger"
 alias chrome="chromium"
 alias .f="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
