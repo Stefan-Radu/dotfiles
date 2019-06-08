@@ -138,6 +138,10 @@ set expandtab " Use spaces insted of tabs
 set shiftround " Use multiples of shiftwidth when << >> 
 set shiftwidth=2
 
+" LineBreak
+set wrap
+set linebreak
+
 " UI config
 set mouse=a
 set number
