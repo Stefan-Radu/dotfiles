@@ -142,6 +142,9 @@ set shiftwidth=2
 set wrap
 set linebreak
 
+" Spell Check
+set spelllang=en_gb
+
 " UI config
 set mouse=a
 set number
