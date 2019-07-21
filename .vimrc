@@ -11,6 +11,8 @@ Plug 'scrooloose/nerdtree' " File treeview
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 " Plug 'valloric/youcompleteme' " Autocompleter
 Plug 'shougo/deoplete.nvim' " Autocompleter
+Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
+Plug 'tiagofumo/dart-vim-flutter-layout' " Better indentation for dart code
 
 " FUNCTIONALITY=================================================================
 
@@ -194,12 +196,7 @@ set foldtext=MyFoldText()
 
 " MAPINGS======================================================================={{{
 
-" Bye arrows
-" imap <Up> <Nop>
-" imap <Down> <Nop>
-" imap <Left> <Nop>
-" imap <Right> <Nop>
-
+" No arrows in normal mode
 nmap <Up> <Nop>
 nmap <Down> <Nop>
 nmap <Left> <Nop>
@@ -266,6 +263,10 @@ nnoremap <Tab> :bn<CR>
 
 " Previous buffer
 nnoremap <S-Tab> :bp<CR>
+
+" Propper indentation for flutter
+autocmd filetype dart inoremap ) }<Backspace>)
+autocmd filetype dart inoremap ] }<Backspace>]
 
 "}}} 
 
