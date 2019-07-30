@@ -9,8 +9,7 @@ Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'tpope/vim-markdown' " Markdown syntax
 Plug 'scrooloose/nerdtree' " File treeview
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
-" Plug 'valloric/youcompleteme' " Autocompleter
-Plug 'shougo/deoplete.nvim' " Autocompleter
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
 Plug 'tiagofumo/dart-vim-flutter-layout' " Better indentation for dart code
 
@@ -159,6 +158,8 @@ set wildmenu
 set lazyredraw
 set encoding=utf-8
 set hidden
+set updatetime=300
+set cmdheight=2
 autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
