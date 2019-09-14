@@ -139,6 +139,12 @@ set expandtab " Use spaces insted of tabs
 set shiftround " Use multiples of shiftwidth when << >> 
 set shiftwidth=2
 
+" Find file
+set wildmenu
+set path+=**
+set wildignore+=**/node_modules/**
+set hidden
+
 " LineBreaking
 set wrap
 set linebreak
@@ -154,10 +160,8 @@ set showcmd
 set list
 set listchars=tab:\ \ ,eol:¬ " End of line character
 set cursorline " Highlight current line
-set wildmenu
 set lazyredraw
 set encoding=utf-8
-set hidden
 set updatetime=300
 set cmdheight=2
 autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
