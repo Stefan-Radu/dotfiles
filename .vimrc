@@ -214,7 +214,7 @@ nnoremap <Leader>rs :vertical resize 59 <CR>
 map <F8> <C-w>v<C-l><C-w>s<C-h><Leader>rd
 
 " Save and quit 
-nnoremap <Leader>d :bn <CR> :bd# <CR> 
+nnoremap <Leader>d :bd!<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>W :wall!<CR>
 nnoremap <Leader>q :q<CR>
@@ -288,6 +288,8 @@ set shell=/bin/bash
 autocmd filetype cpp nnoremap <F9> :wall <CR>:! g++ -std=c++14 -DSTEF -O2 -pedantic -Wall -Wfatal-errors main.cpp -o main && TIMEFORMAT='\%3R' && time ./main <CR>
 
 autocmd filetype cpp nnoremap <F10> :wall <CR>:! g++ -std=c++14 -DSTEF -O2 -pedantic -Wall -Wfatal-errors % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR>
+
+autocmd filetype c nnoremap <F9> :wall <CR>:! gcc main.c -o main && TIMEFORMAT='\%3R' && time ./main <CR>
 
 autocmd filetype python nnoremap <F9> :wall <CR>:! TIMEFORMAT='\%3R' && time python %<CR>
 "}}}
