@@ -94,6 +94,15 @@ map <C-t> :NERDTreeToggle<CR>
 " NeoMake{{{
 
 call neomake#configure#automake('rw')
+let g:neomake_python_flake8_maker = {
+    \ 'args': ['--ignore=E128,E221,E241,E272,E251,W702,E203,E201,E202',  '--format=default'],
+    \ 'errorformat':
+        \ '%E%f:%l: could not compile,%-Z%p^,' .
+        \ '%A%f:%l:%c: %t%n %m,' .
+        \ '%A%f:%l: %t%n %m,' .
+        \ '%-G%.%#',
+    \ }
+let g:neomake_python_enabled_makers = ['flake8']
 
 "}}}
 
