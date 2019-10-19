@@ -1,5 +1,5 @@
 ### dotfiles
-* NeoVim configuration file (.vimrc)
+* NeoVim configuration (.vimrc)
 * Terminal configuration
 * Neofetch configuration
 * Oh-my-szh theme
