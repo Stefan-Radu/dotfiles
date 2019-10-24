@@ -7,7 +7,7 @@ font = Fantasque Sans Mono 13
 foreground                = #f8f8f8
 cursor                    = #babdb6
 cursor_foreground         = #000000
-background = rgba(0, 0, 0, 0.5)
+background = rgba(0, 0, 0, 0.75)
 
 # black
 color0  = #2e3436
