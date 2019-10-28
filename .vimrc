@@ -159,7 +159,6 @@ set wrap
 set linebreak
 
 " Text wrap mark
-set textwidth=80
 au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%81v.', -1)
 
 " Spell Check
