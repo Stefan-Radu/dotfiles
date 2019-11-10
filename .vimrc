@@ -118,7 +118,7 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><Tab>  pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-"}}}
+""}}}
 
 "}}}
 
@@ -297,11 +297,11 @@ autocmd filetype cpp map <F5> diei// By Stefan Radu<CR><CR>#include <algorithm><
 
 set shell=/bin/bash
 
-autocmd filetype cpp nnoremap <F9> :wall <CR>:! g++ -std=c++14 -DSTEF -O2 -pedantic -Wall -Wfatal-errors main.cpp -o main && TIMEFORMAT='\%3R' && time ./main <CR>
+autocmd filetype cpp nnoremap <F9> :wall <CR>:! g++ -std=c++14 -DSTEF -O2 -pedantic -Wall -Wfatal-errors main.cpp -o main && TIMEFORMAT='\%3R' && time ./main <CR> :windo e
 
-autocmd filetype cpp nnoremap <F10> :wall <CR>:! g++ -std=c++14 -DSTEF -O2 -pedantic -Wall -Wfatal-errors % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR>
+autocmd filetype cpp nnoremap <F10> :wall <CR>:! g++ -std=c++14 -DSTEF -O2 -pedantic -Wall -Wfatal-errors % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR> :windo e
 
-autocmd filetype c nnoremap <F9> :wall <CR>:! gcc main.c -o main && TIMEFORMAT='\%3R' && time ./main <CR>
+autocmd filetype c nnoremap <F9> :wall <CR>:! gcc main.c -o main && TIMEFORMAT='\%3R' && time ./main <CR> :windo e
 
-autocmd filetype python nnoremap <F9> :wall <CR>:! TIMEFORMAT='\%3R' && time python %<CR>
+autocmd filetype python nnoremap <F9> :wall <CR>:! TIMEFORMAT='\%3R' && time python %<CR> :windo e
 "}}}
