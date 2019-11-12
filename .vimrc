@@ -44,25 +44,6 @@ let g:jellybeans_overrides = {
 
 "}}}
 
-" Ycm{{{
-
-let g:ycm_auto_trigger = 1
-let g:ycm_keep_logfiles = 1
-let g:ycm_max_num_candidates = 7 
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_max_num_identifier_candidates = 7 
-let g:ycm_min_num_of_chars_for_completion = 3
-let g:ycm_key_list_previous_completion = ['<S-Tab>', '<Up>']
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_semantic_triggers =  { 'cpp' : [' -> ', '.', '::', 're!gl', 're!GLFW', 're!GL', 're!GLEW'] }
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-set completeopt-=preview
-
-"}}}
-
 " Airline{{{
 
 let g:airline#extensions#tabline#enabled = 1
@@ -172,7 +153,7 @@ set showcmd
 set list
 set listchars=tab:\ \ ,eol:¬ " End of line character
 set cursorline " Highlight current line
-set lazyredraw
+" set lazyredraw
 set encoding=utf-8
 set updatetime=300
 set cmdheight=2
@@ -297,11 +278,11 @@ autocmd filetype cpp map <F5> diei// By Stefan Radu<CR><CR>#include <algorithm><
 
 set shell=/bin/bash
 
-autocmd filetype cpp nnoremap <F9> :wall <CR>:! g++ -std=c++14 -DSTEF -O2 -pedantic -Wall -Wfatal-errors main.cpp -o main && TIMEFORMAT='\%3R' && time ./main <CR> :windo e
+autocmd filetype cpp nnoremap <F9> :wall <CR>:! g++ -std=c++17 -DSTEF -O2 -pedantic -Wall -Wfatal-errors main.cpp -o main && TIMEFORMAT='\%3R' && time ./main <CR>
 
-autocmd filetype cpp nnoremap <F10> :wall <CR>:! g++ -std=c++14 -DSTEF -O2 -pedantic -Wall -Wfatal-errors % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR> :windo e
+autocmd filetype cpp nnoremap <F10> :wall <CR>:! g++ -std=c++17 -DSTEF -O2 -pedantic -Wall -Wfatal-errors % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR>
 
-autocmd filetype c nnoremap <F9> :wall <CR>:! gcc main.c -o main && TIMEFORMAT='\%3R' && time ./main <CR> :windo e
+autocmd filetype c nnoremap <F9> :wall <CR>:! gcc main.c -o main && TIMEFORMAT='\%3R' && time ./main <CR>
 
-autocmd filetype python nnoremap <F9> :wall <CR>:! TIMEFORMAT='\%3R' && time python %<CR> :windo e
+autocmd filetype python nnoremap <F9> :wall <CR>:! TIMEFORMAT='\%3R' && time python %<CR>
 "}}}
