@@ -280,9 +280,11 @@ set shell=/bin/bash
 
 autocmd filetype cpp nnoremap <F9> :wall <CR>:! g++ -std=c++17 -DSTEF -O2 -pedantic -Wall -Wfatal-errors main.cpp -o main && TIMEFORMAT='\%3R' && time ./main <CR>
 
-autocmd filetype cpp nnoremap <F10> :wall <CR>:! g++ -std=c++17 -DSTEF -O2 -pedantic -Wall -Wfatal-errors % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR>
+autocmd filetype cpp nnoremap <F10> :wall <CR>:! g++ -std=c++17 -DSTEF -O2 -pedantic -Wall -Wfatal-errors % -o %:r<CR>
 
 autocmd filetype c nnoremap <F9> :wall <CR>:! gcc -std=c11 main.c -o main && TIMEFORMAT='\%3R' && time ./main <CR>
+
+autocmd filetype c nnoremap <F10> :wall <CR>:! gcc -std=c11 % -o %:r<CR>
 
 autocmd filetype python nnoremap <F9> :wall <CR>:! TIMEFORMAT='\%3R' && time python %<CR>
 "}}}
