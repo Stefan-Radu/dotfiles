@@ -140,7 +140,7 @@ set wrap
 set linebreak
 
 " Text wrap mark
-au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%81v.', -1)
+" au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%81v.', -1)
 
 " Spell Check
 set spelllang=en_gb
@@ -282,9 +282,11 @@ autocmd filetype cpp nnoremap <F9> :wall <CR>:! g++ -std=c++17 -DSTEF -O2 -pedan
 
 autocmd filetype cpp nnoremap <F10> :wall <CR>:! g++ -std=c++17 -DSTEF -O2 -pedantic -Wall -Wfatal-errors % -o %:r<CR>
 
-autocmd filetype c nnoremap <F9> :wall <CR>:! gcc -std=c11 main.c -o main && TIMEFORMAT='\%3R' && time ./main <CR>
+autocmd filetype c nnoremap <F9> :wall <CR>:! gcc -std=c11 -O2 -pedantic -Wall -Wfatal-errors main.c -o main && TIMEFORMAT='\%3R' && time ./main <CR>
 
-autocmd filetype c nnoremap <F10> :wall <CR>:! gcc -std=c11 % -o %:r<CR>
+autocmd filetype c nnoremap <F10> :wall <CR>:! gcc -std=c11 -O2 -pedantic -Wall -Wfatal-errors % -o %:r<CR>
+
+autocmd filetype rust nnoremap <F9> :wall <CR>:! cargo run<CR>
 
 autocmd filetype python nnoremap <F9> :wall <CR>:! TIMEFORMAT='\%3R' && time python %<CR>
 "}}}
