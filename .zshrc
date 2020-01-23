@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 PATH="$PATH"
-export PATH=/opt/android-studio/bin/:/opt/android-sdk/platform-tools:/opt/flutter/bin:$PATH
+export PATH=~/personal_projects/bin:/opt/android-studio/bin/:/opt/android-sdk/platform-tools:/opt/flutter/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -107,3 +107,4 @@ setopt rm_star_silent
 unalias rm
 
 neofetch
+quotes ~/Documents/quotes.md
