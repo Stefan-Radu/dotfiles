@@ -6,7 +6,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'neomake/neomake' " Linting
 Plug 'tpope/vim-fugitive' " Git wrapper
-Plug 'tpope/vim-markdown' " Markdown syntax
 Plug 'scrooloose/nerdtree' " File treeview
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
@@ -266,6 +265,9 @@ nnoremap <S-Tab> :bp<CR>
 autocmd filetype dart inoremap ) }<Backspace>)
 autocmd filetype dart inoremap ] }<Backspace>]
 
+"VimWiki like
+nnoremap <CR> :e <cfile><CR>
+nnoremap <Backspace> <C-O>
 "}}} 
 
 " RESET TO DEFAULT C++ FILE ==================================================={{{
@@ -280,11 +282,11 @@ set shell=/bin/bash
 
 autocmd filetype cpp nnoremap <F9> :wall <CR>:! g++ -std=c++17 -DSTEF -O2 -pedantic -Wall -Wfatal-errors main.cpp -o main && TIMEFORMAT='\%3R' && time ./main <CR>
 
-autocmd filetype cpp nnoremap <F10> :wall <CR>:! g++ -std=c++17 -DSTEF -O2 -pedantic -Wall -Wfatal-errors % -o %:r<CR>
+autocmd filetype cpp nnoremap <F10> :wall <CR>:! g++ -std=c++17 -DSTEF -O2 -pedantic -Wall -Wfatal-errors % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR>
 
 autocmd filetype c nnoremap <F9> :wall <CR>:! gcc -std=c11 -O2 -pedantic -Wall -Wfatal-errors main.c -o main && TIMEFORMAT='\%3R' && time ./main <CR>
 
-autocmd filetype c nnoremap <F10> :wall <CR>:! gcc -std=c11 -O2 -pedantic -Wall -Wfatal-errors % -o %:r<CR>
+autocmd filetype c nnoremap <F10> :wall <CR>:! gcc -std=c11 -O2 -pedantic -Wall -Wfatal-errors % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR>
 
 autocmd filetype rust nnoremap <F9> :wall <CR>:! cargo run<CR>
 
