@@ -109,9 +109,14 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_follow_anchor = 1
 let g:vim_markdown_new_list_item_indent = 0
 
-"VimWiki like
+" VimWiki like
 map <CR> ge
 nnoremap <Backspace> <C-O>
+
+" Markdown preview
+
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 1
 
 "}}}
 
