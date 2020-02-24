@@ -20,6 +20,8 @@ Plug 'kana/vim-textobj-user' " TxtObj utility
 Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
 Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
 Plug 'iamcco/markdown-preview.vim' " Markdown preview
+Plug 'plasticboy/vim-markdown' "Markdown mode
+Plug 'junegunn/goyo.vim' "No distractions
 
 " CUSTOMIZTION=================================================================
 
@@ -99,6 +101,19 @@ inoremap <expr><Tab>  pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 ""}}}
+
+" Markdown{{{
+
+set conceallevel=2
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_follow_anchor = 1
+let g:vim_markdown_new_list_item_indent = 0
+
+"VimWiki like
+map <CR> ge
+nnoremap <Backspace> <C-O>
+
+"}}}
 
 "}}}
 
@@ -265,9 +280,6 @@ nnoremap <S-Tab> :bp<CR>
 autocmd filetype dart inoremap ) }<Backspace>)
 autocmd filetype dart inoremap ] }<Backspace>]
 
-"VimWiki like
-nnoremap <CR> :e <cfile><CR>
-nnoremap <Backspace> <C-O>
 "}}} 
 
 " RESET TO DEFAULT C++ FILE ==================================================={{{
