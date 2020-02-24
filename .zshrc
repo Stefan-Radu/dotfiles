@@ -100,6 +100,7 @@ export VISUAL='nvim'
 # Custom
 
 alias vim="nvim"
+alias notes="vim ~/Documents/notes/index.md"
 alias chrome="chromium"
 alias .f="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
