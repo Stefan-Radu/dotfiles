@@ -5,12 +5,12 @@ call plug#begin('~/.vim/plugged')
 " UTILITIES=====================================================================
 
 Plug 'neomake/neomake' " Linting
-Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'scrooloose/nerdtree' " File treeview
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
 Plug 'tiagofumo/dart-vim-flutter-layout' " Better indentation for dart code
+Plug 'plasticboy/vim-markdown' "Markdown mode
 
 " FUNCTIONALITY=================================================================
 
@@ -20,7 +20,6 @@ Plug 'kana/vim-textobj-user' " TxtObj utility
 Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
 Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
 Plug 'iamcco/markdown-preview.vim' " Markdown preview
-Plug 'plasticboy/vim-markdown' "Markdown mode
 Plug 'junegunn/goyo.vim' "No distractions
 
 " CUSTOMIZTION=================================================================
@@ -94,14 +93,6 @@ let g:polyglot_disabled = ['markdown']
 
 "}}}
 
-" Deoplete{{{
-
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><Tab>  pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-""}}}
-
 " Markdown{{{
 
 set conceallevel=2
@@ -118,6 +109,12 @@ nnoremap <Backspace> <C-O>
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 1
 
+"}}}
+
+" COC{{{
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "}}}
 
 "}}}
@@ -182,6 +179,10 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Don't backup
 set nobackup
 set noswapfile
+
+" Persistend undo
+set undodir=~/.vim/undodir
+set undofile
 
 " Indentation
 set cinoptions+=g0
