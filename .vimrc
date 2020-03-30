@@ -20,7 +20,7 @@ Plug 'kana/vim-textobj-user' " TxtObj utility
 Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
 Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
 Plug 'iamcco/markdown-preview.vim' " Markdown preview
-Plug 'junegunn/goyo.vim' "No distractions
+Plug 'chrisbra/colorizer' " Color colors
 
 " CUSTOMIZTION=================================================================
 
@@ -101,8 +101,8 @@ let g:vim_markdown_follow_anchor = 1
 let g:vim_markdown_new_list_item_indent = 0
 
 " VimWiki like
-map <CR> ge
-nnoremap <Backspace> <C-O>
+autocmd filetype markdown map <CR> ge
+autocmd filetype markdown nnoremap <Backspace> <C-O>
 
 " Markdown preview
 
@@ -309,4 +309,7 @@ autocmd filetype c nnoremap <F10> :wall <CR>:! gcc -std=c11 -O2 -pedantic -Wall 
 autocmd filetype rust nnoremap <F9> :wall <CR>:! cargo run<CR>
 
 autocmd filetype python nnoremap <F9> :wall <CR>:! TIMEFORMAT='\%3R' && time python %<CR>
+
+autocmd filetype sh nnoremap <F9> :wall <CR>:! ./% <CR>
+
 "}}}
