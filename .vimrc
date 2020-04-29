@@ -4,23 +4,23 @@ call plug#begin('~/.vim/plugged')
 
 " UTILITIES=====================================================================
 
-Plug 'neomake/neomake' " Linting
-Plug 'scrooloose/nerdtree' " File treeview
+Plug 'scrooloose/nerdtree' " Tree explorer
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
+Plug 'juleswang/css.vim' " CSS syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
-Plug 'tiagofumo/dart-vim-flutter-layout' " Better indentation for dart code
 Plug 'plasticboy/vim-markdown' "Markdown mode
 
 " FUNCTIONALITY=================================================================
 
 Plug 'tpope/vim-repeat' " Repeate actions
-Plug 'tpope/vim-commentary' " For comments -> gc
+Plug 'tomtom/tcomment_vim' " For comments
 Plug 'kana/vim-textobj-user' " TxtObj utility
 Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
 Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
 Plug 'iamcco/markdown-preview.vim' " Markdown preview
 Plug 'chrisbra/colorizer' " Color colors
+Plug 'alvan/vim-closetag' " Close tags auto
 
 " CUSTOMIZTION=================================================================
 
@@ -66,30 +66,9 @@ let g:airline_symbols.maxlinenr = ''
 
 "}}}
 
-" NerdTree{{{
-
-map <C-t> :NERDTreeToggle<CR>
-
-"}}}
-
-" NeoMake{{{
-
-call neomake#configure#automake('rw')
-let g:neomake_python_flake8_maker = {
-    \ 'args': ['--ignore=E128,E221,E241,E272,E251,W702,E203,E201,E202',  '--format=default'],
-    \ 'errorformat':
-        \ '%E%f:%l: could not compile,%-Z%p^,' .
-        \ '%A%f:%l:%c: %t%n %m,' .
-        \ '%A%f:%l: %t%n %m,' .
-        \ '%-G%.%#',
-    \ }
-let g:neomake_python_enabled_makers = ['flake8']
-
-"}}}
-
 " Polyglot{{{
 
-let g:polyglot_disabled = ['markdown']
+let g:polyglot_disabled = ['markdown', 'css']
 
 "}}}
 
@@ -115,6 +94,22 @@ let g:mkdp_refresh_slow = 1
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+"}}}
+
+" NETRW {{{
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 0
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
+
+"}}}
+
+" NerdTree {{{
+
+map <C-t> :NERDTreeToggle<CR>
+
 "}}}
 
 "}}}
@@ -282,9 +277,9 @@ nnoremap <Tab> :bn<CR>
 " Previous buffer
 nnoremap <S-Tab> :bp<CR>
 
-" Propper indentation for flutter
-autocmd filetype dart inoremap ) }<Backspace>)
-autocmd filetype dart inoremap ] }<Backspace>]
+" " Propper indentation for flutter
+" autocmd filetype dart inoremap ) }<Backspace>)
+" autocmd filetype dart inoremap ] }<Backspace>]
 
 "}}} 
 

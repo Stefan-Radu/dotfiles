@@ -60,7 +60,7 @@ ZSH_THEME="custom1"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git common-aliases sudo
+  git common-aliases sudo vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
