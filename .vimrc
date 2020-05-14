@@ -4,10 +4,11 @@ call plug#begin('~/.vim/plugged')
 
 " UTILITIES=====================================================================
 
-Plug 'scrooloose/nerdtree' " Tree explorer
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 Plug 'juleswang/css.vim' " CSS syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
 Plug 'plasticboy/vim-markdown' "Markdown mode
 
@@ -19,7 +20,6 @@ Plug 'kana/vim-textobj-user' " TxtObj utility
 Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
 Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
 Plug 'iamcco/markdown-preview.vim' " Markdown preview
-Plug 'chrisbra/colorizer' " Color colors
 Plug 'alvan/vim-closetag' " Close tags auto
 
 " CUSTOMIZTION=================================================================
@@ -28,6 +28,7 @@ Plug 'vim-airline/vim-airline' " Airline status
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'nanotech/jellybeans.vim' " The theme
+Plug 'morhetz/gruvbox'
 
 call plug#end ()
 
@@ -106,9 +107,16 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
 
 "}}}
 
-" NerdTree {{{
+" COC {{{
 
-map <C-t> :NERDTreeToggle<CR>
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+
+"}}}
+
+" Fzf {{{
+
+nnoremap <C-p> :GFiles<Cr>
 
 "}}}
 
@@ -117,7 +125,9 @@ map <C-t> :NERDTreeToggle<CR>
 " THEME SETTINGS================================================================{{{
 
 syntax on
-colorscheme jellybeans 
+" colorscheme jellybeans 
+colorscheme gruvbox 
+hi Normal guibg=NONE ctermbg=NONE
 
 "}}}
 
@@ -230,7 +240,7 @@ nnoremap <Leader>Q :qall!<CR>
 map Q <Nop>
 
 " Search
-nnoremap * *<c-o>
+nnoremap * *``
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap <Leader>s :%s///g<left><left>
@@ -276,10 +286,6 @@ nnoremap <Tab> :bn<CR>
 
 " Previous buffer
 nnoremap <S-Tab> :bp<CR>
-
-" " Propper indentation for flutter
-" autocmd filetype dart inoremap ) }<Backspace>)
-" autocmd filetype dart inoremap ] }<Backspace>]
 
 "}}} 
 
