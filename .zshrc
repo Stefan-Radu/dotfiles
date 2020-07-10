@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 PATH="$PATH"
-export PATH=~/personal_projects/bin:/opt/android-studio/bin/:/opt/android-sdk/platform-tools:/opt/flutter/bin:$PATH
+export PATH=~/personal/stuff/bin:/opt/android-studio/bin/:/opt/android-sdk/platform-tools:/opt/flutter/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -60,7 +60,7 @@ ZSH_THEME="custom1"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git common-aliases sudo vi-mode
+  git common-aliases sudo
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -74,19 +74,14 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='nvim'
-fi
-
+export EDITOR='nvim'
 export VISUAL='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -101,11 +96,9 @@ export VISUAL='nvim'
 
 alias vim="nvim"
 alias notes="vim ~/Documents/notes/index.md"
-alias chrome="chromium"
 alias .f="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 setopt rm_star_silent
 unalias rm
 
-neofetch
-quotes ~/Documents/quotes.md
+quotes ~/Documents/quotes.md | cowsay -f tux

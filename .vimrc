@@ -95,6 +95,8 @@ let g:mkdp_refresh_slow = 1
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
 
 "}}}
 
@@ -104,13 +106,6 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 0
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
-
-"}}}
-
-" COC {{{
-
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
 
 "}}}
 
@@ -160,9 +155,6 @@ set hidden
 set wrap
 set linebreak
 
-" Text wrap mark
-" au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%81v.', -1)
-
 " Spell Check
 set spelllang=en_gb
 
@@ -174,7 +166,6 @@ set showcmd
 set list
 set listchars=tab:\ \ ,eol:¬ " End of line character
 set cursorline " Highlight current line
-" set lazyredraw
 set encoding=utf-8
 set updatetime=300
 set cmdheight=2
