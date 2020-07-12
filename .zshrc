@@ -96,9 +96,11 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 alias vim="nvim"
 alias notes="vim ~/Documents/notes/index.md"
-alias .f="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 setopt rm_star_silent
 unalias rm
+
+# At startup
 
 quotes ~/Documents/quotes.md | cowsay -f tux

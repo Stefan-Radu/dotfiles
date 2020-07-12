@@ -28,7 +28,7 @@ Plug 'vim-airline/vim-airline' " Airline status
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'nanotech/jellybeans.vim' " The theme
-Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox' " The other theme
 
 call plug#end ()
 
