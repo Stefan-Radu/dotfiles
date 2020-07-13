@@ -2,6 +2,8 @@
 PATH="$PATH"
 export PATH=~/personal/stuff/bin:/opt/android-studio/bin/:/opt/android-sdk/platform-tools:/opt/flutter/bin:$PATH
 
+fpath+=$HOME/.zsh/pure
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
