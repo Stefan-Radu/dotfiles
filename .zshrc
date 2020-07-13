@@ -6,11 +6,11 @@ export PATH=~/personal/stuff/bin:/opt/android-studio/bin/:/opt/android-sdk/platf
 export ZSH=$HOME/.oh-my-zsh
 
 # Theme
-ZSH_THEME="custom1"
+ZSH_THEME=""
 
 # Plugin list
 plugins=(
-  git common-aliases sudo command-not-found
+  git common-aliases sudo command-not-found vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -24,8 +24,8 @@ zstyle :prompt:pure:prompt:success color '#9F74DB'
 prompt pure
 
 # vi mode
-bindkey -v
-export KEYTIMEOUT=1
+# bindkey -v
+# export KEYTIMEOUT=2
 
 # User configuration
 
