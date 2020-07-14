@@ -25,7 +25,6 @@ Plug 'alvan/vim-closetag' " Close tags auto
 " CUSTOMIZTION=================================================================
 
 Plug 'vim-airline/vim-airline' " Airline status
-Plug 'vim-airline/vim-airline-themes'
 
 Plug 'nanotech/jellybeans.vim' " The theme
 Plug 'morhetz/gruvbox' " The other theme
@@ -224,9 +223,9 @@ map <F8> <C-w>v<C-l><C-w>s<C-h><Leader>rd
 " Save and quit 
 nnoremap <Leader>d :bd!<CR>
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>W :wall!<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>Q :qall!<CR>
+" nnoremap <Leader>W :wall!<CR>
+" nnoremap <Leader>q :q<CR>
+" nnoremap <Leader>Q :qall!<CR>
 map Q <Nop>
 
 " Search

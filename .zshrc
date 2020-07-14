@@ -12,7 +12,7 @@ ZSH_THEME=""
 
 # Plugin list
 plugins=(
-  git common-aliases sudo command-not-found vi-mode
+  git common-aliases thefuck command-not-found
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -26,10 +26,11 @@ zstyle :prompt:pure:prompt:success color '#9F74DB'
 prompt pure
 
 # vi mode
-# bindkey -v
-# export KEYTIMEOUT=2
+bindkey -v
+export KEYTIMEOUT=1
 
 # User configuration
+
 
 # Preferred editor for local and remote sessions
 
