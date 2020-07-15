@@ -248,12 +248,6 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" Go to first character in line
-nnoremap H ^
-
-" Go to last character in line
-nnoremap L g_
-
 " Clear search highlight
 nnoremap <silent> <Leader><Space> :noh<CR>
 
