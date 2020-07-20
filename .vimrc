@@ -93,16 +93,6 @@ let g:mkdp_refresh_slow = 1
 
 " COC{{{
 
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
