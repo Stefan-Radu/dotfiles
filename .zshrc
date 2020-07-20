@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 PATH="$PATH"
-export PATH=~/personal/stuff/bin:/opt/android-studio/bin/:/opt/android-sdk/platform-tools:/opt/flutter/bin:$PATH
+export PATH=~/personal/projects/bin:/opt/android-studio/bin/:/opt/android-sdk/platform-tools:/opt/flutter/bin:$PATH
 
 fpath+=$HOME/.zsh/pure
 
