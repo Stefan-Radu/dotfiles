@@ -137,12 +137,17 @@ set infercase
 " Search hightlight color
 hi Search cterm=NONE ctermfg=black ctermbg=blue 
 
-" Spaces and tabs 
+" Indentation
 set tabstop=2
 set softtabstop=2
 set expandtab " Use spaces insted of tabs
 set shiftround " Use multiples of shiftwidth when << >> 
 set shiftwidth=2
+set cinoptions+=g0
+set cpoptions+=x
+
+" don't let python override indentations settings
+let g:python_recommended_style=0
 
 " Find file
 set wildmenu
@@ -178,10 +183,6 @@ set noswapfile
 " Persistend undo
 set undodir=~/.vim/undodir
 set undofile
-
-" Indentation
-set cinoptions+=g0
-set cpoptions+=x
 
 " Folding
 set foldlevelstart=0
