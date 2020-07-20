@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 Plug 'juleswang/css.vim' " CSS syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
+Plug 'w0rp/ale' " linting
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
@@ -92,6 +93,13 @@ let g:mkdp_refresh_slow = 1
 
 " COC{{{
 
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
 autocmd CursorHold * silent call CocActionAsync('highlight')
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
@@ -122,6 +130,7 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
 " Fzf {{{
 
 nnoremap <C-p> :GFiles<Cr>
+nnoremap <C-f> :FZF<Cr>
 
 "}}}
 
