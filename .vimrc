@@ -159,6 +159,10 @@ set cpoptions+=x
 " don't let python override indentations settings
 let g:python_recommended_style=0
 
+" 80 char line
+highlight OverLength ctermbg=darkyellow ctermfg=grey
+match OverLength /\%>80v.\+/
+
 " Find file
 set wildmenu
 set path+=**
