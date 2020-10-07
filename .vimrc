@@ -1,39 +1,3 @@
-" PLUGINS======================================================================={{{
-
-call plug#begin('~/.vim/plugged')
-
-" UTILITIES=====================================================================
-
-Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
-Plug 'juleswang/css.vim' " CSS syntax
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
-Plug 'w0rp/ale' " linting
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
-Plug 'plasticboy/vim-markdown' "Markdown mode
-
-" FUNCTIONALITY=================================================================
-
-Plug 'tpope/vim-repeat' " Repeate actions
-Plug 'tomtom/tcomment_vim' " For comments
-Plug 'kana/vim-textobj-user' " TxtObj utility
-Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
-Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
-Plug 'iamcco/markdown-preview.vim' " Markdown preview
-Plug 'alvan/vim-closetag' " Close tags auto
-
-" CUSTOMIZTION=================================================================
-
-Plug 'vim-airline/vim-airline' " Airline status
-
-Plug 'nanotech/jellybeans.vim' " The theme
-Plug 'morhetz/gruvbox' " The other theme
-
-call plug#end ()
-
-"}}}
-
 " PLUGINS SETTINGS=============================================================={{{
 
 " Jellybeans{{{
@@ -126,6 +90,42 @@ nnoremap <C-f> :FZF<Cr>
 
 "}}}
 
+" PLUGINS======================================================================={{{
+
+call plug#begin('~/.vim/plugged')
+
+" UTILITIES=====================================================================
+
+Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
+Plug 'juleswang/css.vim' " CSS syntax
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
+Plug 'w0rp/ale' " linting
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
+Plug 'plasticboy/vim-markdown' "Markdown mode
+
+" FUNCTIONALITY=================================================================
+
+Plug 'tpope/vim-repeat' " Repeate actions
+Plug 'tomtom/tcomment_vim' " For comments
+Plug 'kana/vim-textobj-user' " TxtObj utility
+Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
+Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
+Plug 'iamcco/markdown-preview.vim' " Markdown preview
+Plug 'alvan/vim-closetag' " Close tags auto
+
+" CUSTOMIZTION=================================================================
+
+Plug 'vim-airline/vim-airline' " Airline status
+
+Plug 'nanotech/jellybeans.vim' " The theme
+Plug 'morhetz/gruvbox' " The other theme
+
+call plug#end ()
+
+"}}}
+
 " THEME SETTINGS================================================================{{{
 
 syntax on
@@ -161,7 +161,7 @@ let g:python_recommended_style=0
 
 " 80 char line
 highlight OverLength ctermbg=darkyellow ctermfg=grey
-match OverLength /\%>80v.\+/
+autocmd filetype python match OverLength /\%>80v.\+/
 
 " Find file
 set wildmenu
