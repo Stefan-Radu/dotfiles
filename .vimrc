@@ -88,6 +88,31 @@ nnoremap <C-f> :FZF<Cr>
 
 "}}}
 
+" Ale {{{
+
+let g:ale_linters = {
+\ 'cs': ['OmniSharp']
+\}
+
+"}}}
+
+" Haskell{{{
+
+let g:haskell_classic_highlighting = 1
+let g:haskell_indent_if = 3
+let g:haskell_indent_case = 2
+let g:haskell_indent_let = 4
+let g:haskell_indent_where = 6
+let g:haskell_indent_before_where = 2
+let g:haskell_indent_after_bare_where = 2
+let g:haskell_indent_do = 3
+let g:haskell_indent_in = 1
+let g:haskell_indent_guard = 2
+let g:haskell_indent_case_alternative = 1
+let g:cabal_indent_section = 2
+
+"}}}
+
 "}}}
 
 " PLUGINS======================================================================={{{
@@ -97,6 +122,7 @@ call plug#begin('~/.vim/plugged')
 " UTILITIES=====================================================================
 
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
+Plug 'neovimhaskell/haskell-vim' " Haskell stuff
 Plug 'juleswang/css.vim' " CSS syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
 Plug 'w0rp/ale' " linting
@@ -114,6 +140,7 @@ Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
 Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
 Plug 'iamcco/markdown-preview.vim' " Markdown preview
 Plug 'alvan/vim-closetag' " Close tags auto
+Plug 'christoomey/vim-tmux-navigator' " Smooth navigation with tmux
 
 " CUSTOMIZTION=================================================================
 
@@ -307,5 +334,7 @@ autocmd filetype rust nnoremap <F9> :wall <CR>:! cargo run<CR>
 autocmd filetype python nnoremap <F9> :wall <CR>:! TIMEFORMAT='\%3R' && time python %<CR>
 
 autocmd filetype sh nnoremap <F9> :wall <CR>:! ./% <CR>
+
+autocmd filetype haskell nnoremap <F9> :wall <CR>:! ghc % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR>
 
 "}}}
