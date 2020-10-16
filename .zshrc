@@ -42,7 +42,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Custom
 
-alias notes="vim ~/Documents/notes/index.md"
+alias notes="$EDITOR ~/Documents/notes/index.md"
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias chrome=chromium
 
