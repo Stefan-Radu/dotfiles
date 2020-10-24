@@ -52,7 +52,7 @@ unalias rm
 
 # At startup
 
-quotes ~/Documents/quotes.md | cowsay -f tux
+quotes ~/Documents/quotes.md | cowsay -f tux | lolcat
 
 # Other plugins
 
