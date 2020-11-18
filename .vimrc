@@ -70,6 +70,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+let g:coc_node_path = substitute(system('which node'), '\n', '', '')
+
 "}}}
 
 " NETRW {{{
@@ -96,7 +98,7 @@ let g:ale_linters = {
 
 "}}}
 
-" Haskell{{{
+" Haskell {{{
 
 let g:haskell_classic_highlighting = 1
 let g:haskell_indent_if = 3
@@ -113,6 +115,13 @@ let g:cabal_indent_section = 2
 
 "}}}
 
+" Tex {{{
+
+let g:vimtex_fold_enabled = 1
+let g:tex_flavor = 'latex'
+
+"}}}
+
 "}}}
 
 " PLUGINS======================================================================={{{
@@ -123,13 +132,13 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 Plug 'neovimhaskell/haskell-vim' " Haskell stuff
-Plug 'juleswang/css.vim' " CSS syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
 Plug 'w0rp/ale' " linting
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
 Plug 'plasticboy/vim-markdown' "Markdown mode
+Plug 'lervag/vimtex'
 
 " FUNCTIONALITY=================================================================
 
@@ -187,8 +196,8 @@ set cpoptions+=x
 let g:python_recommended_style=0
 
 " 80 char line
-highlight OverLength ctermbg=darkyellow ctermfg=grey
 autocmd filetype python match OverLength /\%>80v.\+/
+highlight OverLength ctermbg=darkyellow ctermfg=grey
 
 " Find file
 set wildmenu
