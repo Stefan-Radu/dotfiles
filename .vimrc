@@ -130,7 +130,7 @@ call plug#begin('~/.vim/plugged')
 
 " UTILITIES=====================================================================
 
-Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
+" Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 Plug 'neovimhaskell/haskell-vim' " Haskell stuff
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
 Plug 'w0rp/ale' " linting
@@ -138,7 +138,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
 Plug 'plasticboy/vim-markdown' "Markdown mode
-Plug 'lervag/vimtex'
 
 " FUNCTIONALITY=================================================================
 
