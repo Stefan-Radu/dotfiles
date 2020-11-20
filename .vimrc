@@ -12,22 +12,6 @@ let g:jellybeans_overrides = {
 " Airline{{{
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:Powerline_symbols = 'unicode'
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-" powerline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.maxlinenr = ''
 
 "}}}
 
@@ -130,14 +114,13 @@ call plug#begin('~/.vim/plugged')
 
 " UTILITIES=====================================================================
 
-" Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 Plug 'neovimhaskell/haskell-vim' " Haskell stuff
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
 Plug 'w0rp/ale' " linting
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
-Plug 'plasticboy/vim-markdown' "Markdown mode
+Plug 'plasticboy/vim-markdown' " Markdown mode
 
 " FUNCTIONALITY=================================================================
 
@@ -156,6 +139,7 @@ Plug 'vim-airline/vim-airline' " Airline status
 
 Plug 'nanotech/jellybeans.vim' " The theme
 Plug 'morhetz/gruvbox' " The other theme
+Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 
 call plug#end ()
 
