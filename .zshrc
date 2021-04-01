@@ -12,7 +12,7 @@ ZSH_THEME=""
 
 # Plugin list
 plugins=(
-  git common-aliases thefuck command-not-found
+  git common-aliases thefuck command-not-found colored-man-pages
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -52,7 +52,7 @@ unalias rm
 
 # At startup
 
-quotes ~/Documents/quotes.md | cowsay -f tux | lolcat
+random_quote ~/Documents/notes/quotes.csv | cowsay -f tux | lolcat
 
 # Other plugins
 
