@@ -56,6 +56,27 @@ nmap <silent> gr <Plug>(coc-references)
 
 let g:coc_node_path = substitute(system('which node'), '\n', '', '')
 
+" Use K to show documentation in preview window.
+nnoremap <silent> gk :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ca  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
 "}}}
 
 " NETRW {{{
@@ -114,6 +135,7 @@ call plug#begin('~/.vim/plugged')
 
 " UTILITIES=====================================================================
 
+Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 Plug 'neovimhaskell/haskell-vim' " Haskell stuff
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
 Plug 'w0rp/ale' " linting
@@ -139,7 +161,6 @@ Plug 'vim-airline/vim-airline' " Airline status
 
 Plug 'nanotech/jellybeans.vim' " The theme
 Plug 'morhetz/gruvbox' " The other theme
-Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 
 call plug#end ()
 
@@ -327,5 +348,7 @@ autocmd filetype python nnoremap <F9> :wall <CR>:! TIMEFORMAT='\%3R' && time pyt
 autocmd filetype sh nnoremap <F9> :wall <CR>:! ./% <CR>
 
 autocmd filetype haskell nnoremap <F9> :wall <CR>:! ghc % -o %:r && TIMEFORMAT='\%3R' && time ./%:r <CR>
+
+autocmd filetype java nnoremap <F9> :wall <CR>:! TIMEFORMAT='\%3R' && time java %<CR>
 
 "}}}
