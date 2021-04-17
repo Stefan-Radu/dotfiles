@@ -158,8 +158,8 @@ Plug 'christoomey/vim-tmux-navigator' " Smooth navigation with tmux
 " CUSTOMIZTION=================================================================
 
 Plug 'vim-airline/vim-airline' " Airline status
-
-Plug 'nanotech/jellybeans.vim' " The theme
+" 
+" Plug 'nanotech/jellybeans.vim' " The theme
 Plug 'morhetz/gruvbox' " The other theme
 
 call plug#end ()
@@ -226,7 +226,6 @@ set listchars=tab:\ \ ,eol:¬ " End of line character
 set cursorline " Highlight current line
 set encoding=utf-8
 set updatetime=300
-set cmdheight=2
 autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
