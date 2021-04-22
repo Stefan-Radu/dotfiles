@@ -138,7 +138,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 Plug 'neovimhaskell/haskell-vim' " Haskell stuff
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
-Plug 'w0rp/ale' " linting
+" Plug 'w0rp/ale' " linting
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
@@ -199,9 +199,19 @@ set cpoptions+=x
 " don't let python override indentations settings
 let g:python_recommended_style=0
 
-" 80 char line
-autocmd filetype python match OverLength /\%>80v.\+/
+" highlight long lines (>80 char)
 highlight OverLength ctermbg=darkyellow ctermfg=grey
+
+function! HighlightLongLines()
+  let file_type = &filetype
+  if index(['python'], file_type) >= 0
+    match OverLength /\%>80v.\+/
+  else
+    call clearmatches()
+  endif
+endfunction
+
+autocmd BufEnter * call HighlightLongLines()
 
 " Find file
 set wildmenu
@@ -316,7 +326,7 @@ nnoremap j gj
 nnoremap k gk
 
 " Next buffer
-nnoremap <Tab> :bn<CR> 
+nnoremap <Tab> :bn<CR>
 
 " Previous buffer
 nnoremap <S-Tab> :bp<CR>
