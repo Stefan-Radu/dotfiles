@@ -28,13 +28,8 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_follow_anchor = 1
 let g:vim_markdown_new_list_item_indent = 0
 
-" VimWiki like
-autocmd filetype markdown map <CR> ge
-autocmd filetype markdown nnoremap <Backspace> <C-O>
-
 " Markdown preview
 
-let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 1
 
 "}}}
@@ -49,15 +44,15 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
 
 let g:coc_node_path = substitute(system('which node'), '\n', '', '')
 
 " Use K to show documentation in preview window.
-nnoremap <silent> gk :call <SID>show_documentation()<CR>
+nnoremap <silent> <leader>gk :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -90,8 +85,8 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
 
 " Fzf {{{
 
-nnoremap <C-p> :GFiles<Cr>
-nnoremap <C-f> :FZF<Cr>
+nnoremap <leader>f :GFiles<Cr>
+nnoremap <leader>F :FZF<Cr>
 
 "}}}
 
@@ -320,10 +315,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-" Don't jump lines when wrapped
-nnoremap j gj
-nnoremap k gk
 
 " Next buffer
 nnoremap <Tab> :bn<CR>
