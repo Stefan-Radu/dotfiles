@@ -9,19 +9,19 @@ let g:jellybeans_overrides = {
 
 "}}}
 
-" Airline{{{
+" Airline {{{
 
 let g:airline#extensions#tabline#enabled = 1
 
 "}}}
 
-" Polyglot{{{
+" Polyglot {{{
 
 let g:polyglot_disabled = ['markdown', 'css']
 
 "}}}
 
-" Markdown{{{
+" Markdown {{{
 
 set conceallevel=2
 let g:vim_markdown_folding_disabled = 1
@@ -34,7 +34,7 @@ let g:mkdp_refresh_slow = 1
 
 "}}}
 
-" COC{{{
+" Coc {{{
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -122,6 +122,33 @@ let g:tex_flavor = 'latex'
 
 "}}}
 
+" Go {{{
+
+" disable all linters as that is taken care of by coc.nvim
+let g:go_diagnostics_enabled = 0
+let g:go_metalinter_enabled = []
+
+" don't jump to errors after metalinter is invoked
+let g:go_jump_to_error = 0
+
+" run go imports on file save
+let g:go_fmt_command = "goimports"
+
+" automatically highlight variable your cursor is on
+let g:go_auto_sameids = 0
+
+" highlight
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+
+"}}}
+
 "}}}
 
 " PLUGINS======================================================================={{{
@@ -133,11 +160,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 Plug 'neovimhaskell/haskell-vim' " Haskell stuff
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
-" Plug 'w0rp/ale' " linting
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
 Plug 'plasticboy/vim-markdown' " Markdown mode
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " FUNCTIONALITY=================================================================
 

@@ -44,17 +44,11 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 alias vim=nvim
 alias notes="$EDITOR ~/Documents/notes/index.md"
-alias quotes="$EDITOR ~/Documents/notes/quotes.csv"
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias chrome=chromium
 
 setopt rm_star_silent
 unalias rm
 
-# At startup
-
-random_quote ~/Documents/notes/quotes.csv | cowsay -f tux | lolcat
-
 # Other plugins
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
