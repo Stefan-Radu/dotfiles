@@ -45,6 +45,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 alias vim=nvim
 alias notes="$EDITOR ~/Documents/notes/index.md"
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias vpn="/home/sradu/Documents/vpn-sso/vpn-sso connect --ca ~/Documents/cert/ca_cert.crt --cert ~/Documents/cert/user_cert.crt --key ~/Documents/cert/user_cert.key --gateway ra.bitdefender.com"
+alias vpn_debug="/home/sradu/Documents/vpn-sso/vpn-sso --log-level debug connect --ca ~/Documents/cert/ca_cert.crt --cert ~/Documents/cert/user_cert.crt --key ~/Documents/cert/user_cert.key --gateway ra.bitdefender.com"
 
 setopt rm_star_silent
 unalias rm

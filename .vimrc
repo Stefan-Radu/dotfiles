@@ -173,7 +173,8 @@ Plug 'tomtom/tcomment_vim' " For comments
 Plug 'kana/vim-textobj-user' " TxtObj utility
 Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
 Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
-Plug 'iamcco/markdown-preview.vim' " Markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },
+      \ 'for': ['markdown', 'vim-plug']} " Markdown preview
 Plug 'alvan/vim-closetag' " Close tags auto
 Plug 'christoomey/vim-tmux-navigator' " Smooth navigation with tmux
 
