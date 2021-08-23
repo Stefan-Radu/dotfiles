@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 PATH="$PATH"
 export PATH=~/personal/projects/bin:/opt/android-studio/bin/:/opt/android-sdk/platform-tools:/opt/flutter/bin:$PATH
+export KUBECONFIG=~/.kube/config:~/.kube/config-athena
 
 fpath+=$HOME/.zsh/pure
 
@@ -43,14 +44,23 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Custom
 
 alias vim=nvim
+alias sudo="sudo "
 alias notes="$EDITOR ~/Documents/notes/index.md"
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias vpn="/home/sradu/Documents/vpn-sso/vpn-sso connect --ca ~/Documents/cert/ca_cert.crt --cert ~/Documents/cert/user_cert.crt --key ~/Documents/cert/user_cert.key --gateway ra.bitdefender.com"
 alias vpn_debug="/home/sradu/Documents/vpn-sso/vpn-sso --log-level debug connect --ca ~/Documents/cert/ca_cert.crt --cert ~/Documents/cert/user_cert.crt --key ~/Documents/cert/user_cert.key --gateway ra.bitdefender.com"
 
+# taskwarrior completion & alias
+zstyle ':completion:*:*:task:*' verbose yes
+alias t=task
+compdef _task t=task
+
 setopt rm_star_silent
 unalias rm
 
 # Other plugins
-
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
+
+# kubectl completion
+source <(kubectl completion zsh)
+
