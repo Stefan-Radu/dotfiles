@@ -1,0 +1,19 @@
+{
+  "suggest.minTriggerInputLength": 2,
+  "suggest.maxCompleteItemCount": 10,
+  "diagnostic.enableMessage": "always",
+  "diagnostic.messageTarget": "float",
+  "diagnostic.virtualText": false,
+  "diagnostic.refreshOnInsertMode": true,
+  "javascript.suggestionActions.enabled": false,
+  "python.linting.flake8Enabled": false
+/*   "suggest.minTriggerInputLength": 2, */
+/*   "suggest.maxCompleteItemCount": 10, */
+/*   "diagnostic.refreshAfterSave": true, */
+/*   "diagnostic.enable": true, */
+/*   "diagnostic.enableSign": true, */
+/*   "diagnostic.enableMessage": "always", */
+/*   "diagnostic.enableHighlightLineNumber": true, */
+/*   "diagnostic.virtualText": true, */
+/*   "diagnostic.displayByAle": true */
+}
