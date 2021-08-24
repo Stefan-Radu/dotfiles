@@ -51,6 +51,11 @@ alias chrome=chromium
 setopt rm_star_silent
 unalias rm
 
+# taskwarrior completion & alias
+zstyle ':completion:*:*:task:*' verbose yes
+alias t=task
+compdef _task t=task
+
 # At startup
 
 random_quote ~/Documents/notes/quotes.csv | cowsay -f tux | lolcat
