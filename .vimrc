@@ -309,11 +309,6 @@ nmap <Down> <Nop>
 nmap <Left> <Nop>
 nmap <Right> <Nop>
 
-" Resize buffer
-nnoremap <Leader>rd :vertical resize 150 <CR> 
-nnoremap <Leader>rs :vertical resize 59 <CR> 
-map <F8> <C-w>v<C-l><C-w>s<C-h><Leader>rd
-
 " Save and quit 
 nnoremap <Leader>d :bd!<CR>
 nnoremap <Leader>w :w<CR>
