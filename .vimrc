@@ -17,7 +17,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Polyglot{{{
 
-let g:polyglot_disabled = ['markdown', 'css']
+" let g:polyglot_disabled = ['markdown', 'css']
 
 "}}}
 
@@ -126,13 +126,6 @@ let g:cabal_indent_section = 2
 
 "}}}
 
-" Tex {{{
-
-let g:vimtex_fold_enabled = 1
-let g:tex_flavor = 'latex'
-
-"}}}
-
 "}}}
 
 " PLUGINS======================================================================={{{
@@ -144,7 +137,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 Plug 'neovimhaskell/haskell-vim' " Haskell stuff
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
-" Plug 'w0rp/ale' " linting
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
@@ -158,13 +150,12 @@ Plug 'kana/vim-textobj-user' " TxtObj utility
 Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
 Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
 Plug 'iamcco/markdown-preview.vim' " Markdown preview
-Plug 'alvan/vim-closetag' " Close tags auto
+Plug 'alvan/vim-closetag' " Close tags auto (for html/xml)
 Plug 'christoomey/vim-tmux-navigator' " Smooth navigation with tmux
 
 " CUSTOMIZTION=================================================================
 
 Plug 'vim-airline/vim-airline' " Airline status
-" 
 " Plug 'nanotech/jellybeans.vim' " The theme
 Plug 'morhetz/gruvbox' " The other theme
 
