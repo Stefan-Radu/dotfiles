@@ -10,8 +10,26 @@
 
 # Use the command 'task show' to see all defaults and overrides
 
+# Preferences 
+alias.burndown=burndown.daily
+confirmation=0
+default.command=ready +bit
+# print.empty.columns=1
+report.next.filter=status:pending limit:page -book +bit
+report.ready.filter=+READY +bit
+
+# Use the command 'task show' to see all defaults and overrides
+
 # Files
 data.location=~/.task
+
+#Sync
+taskd.certificate=~/.task/cert/private.certificate.pem
+taskd.key=~/.task/cert/private.key.pem
+taskd.ca=~/.task/cert/ca.cert.pem
+taskd.server=inthe.am:53589
+taskd.credentials=inthe_am/stefan270101/769cf0ab-fff3-4826-a0fb-c5b28492cebc
+taskd.trust=strict
 
 # Color theme (uncomment one to use)
 #include /usr/share/taskwarrior/light-16.theme
@@ -23,8 +41,14 @@ data.location=~/.task
 #include /usr/share/taskwarrior/dark-blue-256.theme
 #include /usr/share/taskwarrior/dark-violets-256.theme
 #include /usr/share/taskwarrior/dark-yellow-green.theme
-#include /usr/share/taskwarrior/dark-gray-256.theme
+include /usr/share/taskwarrior/dark-gray-256.theme
 #include /usr/share/taskwarrior/dark-gray-blue-256.theme
-include /usr/share/taskwarrior/solarized-dark-256.theme
+# include /usr/share/taskwarrior/solarized-dark-256.theme
 #include /usr/share/taskwarrior/solarized-light-256.theme
 #include /usr/share/taskwarrior/no-color.theme
+uda.reviewed.type=date
+uda.reviewed.label=Reviewed
+report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+report._reviewed.columns=uuid
+report._reviewed.sort=reviewed+,modified+
+report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
