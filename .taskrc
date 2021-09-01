@@ -11,17 +11,19 @@
 # Prefferences 
 alias.burndown=burndown.daily
 confirmation=0
+default.command=ready
 # print.empty.columns=1
-report.next.filter=status:pending limit:page -book
+report.next.filter=status:pending limit:page -book -bit
+report.ready.filter=+READY -bit
 
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
 data.location=~/.task
 #Sync
-taskd.certificate=/home/stef/.task/cert/private.certificate.pem
-taskd.key=/home/stef/.task/cert/private.key.pem
-taskd.ca=/home/stef/.task/cert/ca.cert.pem
+taskd.certificate=~/.task/cert/private.certificate.pem
+taskd.key=~/.task/cert/private.key.pem
+taskd.ca=~/.task/cert/ca.cert.pem
 taskd.server=inthe.am:53589
 taskd.credentials=inthe_am/stefan270101/769cf0ab-fff3-4826-a0fb-c5b28492cebc
 taskd.trust=strict
