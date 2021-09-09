@@ -15,7 +15,7 @@ alias.burndown=burndown.daily
 confirmation=0
 default.command=ready +bit
 # print.empty.columns=1
-report.next.filter=status:pending limit:page -book
+# report.next.filter=status:pending limit:page -book
 
 # Use the command 'task show' to see all defaults and overrides
 

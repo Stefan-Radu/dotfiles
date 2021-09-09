@@ -311,7 +311,6 @@ nmap <Right> <Nop>
 
 " Save and quit 
 nnoremap <Leader>d :bd!<CR>
-nnoremap <Leader>w :w<CR>
 map Q <Nop>
 
 " Search
