@@ -283,7 +283,6 @@ map <F8> <C-w>v<C-l><C-w>s<C-h><Leader>rd
 
 " Save and quit 
 nnoremap <Leader>d :bd!<CR>
-nnoremap <Leader>w :w<CR>
 map Q <Nop>
 
 " Search
