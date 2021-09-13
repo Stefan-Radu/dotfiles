@@ -16,6 +16,7 @@ confirmation=0
 default.command=ready +bit
 # print.empty.columns=1
 # report.next.filter=status:pending limit:page -book
+urgency.tags.coefficieny=0
 
 # Use the command 'task show' to see all defaults and overrides
 

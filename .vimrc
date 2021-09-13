@@ -205,7 +205,7 @@ hi Normal guibg=NONE ctermbg=NONE
 
 "}}}
 
-" COMMON SETTINGS==============================================================={{{
+" SETTINGS==============================================================={{{
 
 " Search
 set hlsearch
@@ -350,6 +350,33 @@ nnoremap <Tab> :bn<CR>
 
 " Previous buffer
 nnoremap <S-Tab> :bp<CR>
+
+" Enter create file link like in vimwiki
+function! CreateFileLink()
+    let vim_wiki_extension = ".md"
+
+    let current_line = getline('.')
+    if stridx(current_line, vim_wiki_extension) >= 0
+      return
+    endif
+
+    if stridx(current_line, "*") >= 0 ||
+          \ stridx(current_line, "-") >= 0 ||
+          \ stridx(current_line, " ") >= 0 ||
+          \ stridx(current_line, "#") >= 0
+      return
+    endif
+
+    execute "normal! 0i["
+    execute "normal! $a]"
+    execute "normal! bbyi[$pF]a("
+    execute "normal! $a" . vim_wiki_extension
+    execute "normal! $a)"
+    execute "normal! 0"
+
+endfunction
+
+autocmd Filetype markdown nnoremap <CR> :call CreateFileLink() <CR>
 
 "}}} 
 
