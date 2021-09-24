@@ -8,13 +8,28 @@
 #   variable=      -- By specifying no value, this means no default
 #   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
 
-# Prefferences 
+# Preferences 
 alias.burndown=burndown.daily
 confirmation=0
 default.command=ready
-# print.empty.columns=1
-report.next.filter=status:pending limit:page -chillout -bit
 report.ready.filter=+READY -bit
+report.next.filter=status:pending limit:27 -chillout -bit
+urgency.tags.coefficient=0
+urgency.annotations.coefficient=0
+urgency.blocking.coefficient=0
+urgency.scheduled.coefficient=2
+urgency.due.coefficient=12
+urgency.project.coefficient=0
+urgency.age.coefficient=3.0
+urgency.uda.priority.L.coefficient=-1.8
+urgency.uda.priority.M.coefficient=3.6
+urgency.uda.priority.H.coefficient=10
+urgency.uda.tag.ai_promis.coefficient=7
+urgency.uda.tag.ai_promis.coefficient=3
+urgency.uda.tag.learning.coefficient=1
+urgency.uda.tag.register.coefficient=2
+report.ready.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,due.relative,until.remaining,description,urgency
+report.ready.labels=ID,Active,Age,D,P,Project,Tags,R,Due!,Until,Description,Urg
 
 # Use the command 'task show' to see all defaults and overrides
 
