@@ -12,8 +12,8 @@
 alias.burndown=burndown.daily
 confirmation=0
 default.command=ready
-report.ready.filter=+READY -bit
-report.next.filter=status:pending limit:27 -chillout -bit
+report.ready.filter=+READY
+report.next.filter=status:pending limit:27 -chillout
 urgency.tags.coefficient=0
 urgency.annotations.coefficient=0
 urgency.blocking.coefficient=0
