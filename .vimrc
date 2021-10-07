@@ -30,7 +30,7 @@ let g:vim_markdown_new_list_item_indent = 0
 
 " Markdown preview
 
-let g:mkdp_refresh_slow = 1
+let g:mkdp_auto_start = 1
 
 "}}}
 
@@ -149,7 +149,7 @@ Plug 'tomtom/tcomment_vim' " For comments
 Plug 'kana/vim-textobj-user' " TxtObj utility
 Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
 Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
-Plug 'iamcco/markdown-preview.vim' " Markdown preview
+Plug 'iamcco/markdown-preview.nvim' " Markdown preview
 Plug 'alvan/vim-closetag' " Close tags auto (for html/xml)
 Plug 'christoomey/vim-tmux-navigator' " Smooth navigation with tmux
 
