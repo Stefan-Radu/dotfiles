@@ -43,7 +43,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Custom
 
 alias vim=nvim
-alias notes=obsidian ~/Documents/notes
+alias notes=obsidian ~/Documents/notes/index.md
 alias quotes="$EDITOR ~/Documents/notes/quotes.csv"
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias chrome=chromium
