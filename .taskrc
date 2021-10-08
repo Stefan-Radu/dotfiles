@@ -21,6 +21,7 @@ urgency.scheduled.coefficient=2
 urgency.due.coefficient=12
 urgency.project.coefficient=0
 urgency.age.coefficient=3.0
+urgency.active.coefficient=15
 urgency.uda.priority.L.coefficient=-1.8
 urgency.uda.priority.M.coefficient=3.6
 urgency.uda.priority.H.coefficient=10
