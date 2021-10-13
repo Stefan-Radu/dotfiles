@@ -41,10 +41,10 @@ export VISUAL='nvim'
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Custom
+export QUOTES_PATH="/home/stef/Documents/quotes.csv"
 
 alias vim=nvim
-alias notes=obsidian ~/Documents/notes/index.md
-alias quotes="$EDITOR ~/Documents/notes/quotes.csv"
+alias quotes="$EDITOR $QUOTES_PATH"
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias chrome=chromium
 
@@ -58,7 +58,7 @@ compdef _task t=task
 
 # At startup
 
-random_quote ~/Documents/notes/quotes.csv | cowsay -f tux | lolcat
+random_quote "$QUOTES_PATH" | cowsay -f tux | lolcat
 
 # Other plugins
 
