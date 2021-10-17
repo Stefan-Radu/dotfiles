@@ -1,4 +1,4 @@
-" PLUGINS SETTINGS=============================================================={{{
+" PLUGINS SETTINGS===================================================={{{
 
 " Jellybeans{{{
 
@@ -17,7 +17,8 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Polyglot{{{
 
-" let g:polyglot_disabled = ['markdown', 'css']
+" Filetype detect I believe
+" let g:polyglot_disabled = ['ftdetect']
 
 "}}}
 
@@ -99,14 +100,6 @@ nnoremap <leader>F :FZF<Cr>
 
 "}}}
 
-" Ale {{{
-
-let g:ale_linters = {
-\ 'cs': ['OmniSharp']
-\}
-
-"}}}
-
 " Haskell {{{
 
 let g:haskell_classic_highlighting = 1
@@ -124,44 +117,79 @@ let g:cabal_indent_section = 2
 
 "}}}
 
+" Startify {{{
+
+if winwidth(0) <= 120
+  let g:startify_padding_left = winwidth(0) / 6
+else
+  let g:startify_padding_left = winwidth(0) / 3
+endif
+
+let g:startify_ascii = [
+      \ ' ███▄    █ ▓█████  ▒█████      ██▒   █▓ ██▓ ███▄ ▄███▓',
+      \ ' ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒   ▓██░   █▒▓██▒▓██▒▀█▀ ██▒',
+      \ '▓██  ▀█ ██▒▒███   ▒██░  ██▒    ▓██  █▒░▒██▒▓██    ▓██░',
+      \ '▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░     ▒██ █░░░██░▒██    ▒██ ',
+      \ '▒██░   ▓██░░▒████▒░ ████▓▒░      ▒▀█░  ░██░▒██▒   ░██▒',
+      \ '░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░       ░ ▐░  ░▓  ░ ▒░   ░  ░',
+      \ '░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░       ░ ░░   ▒ ░░  ░      ░',
+      \ '   ░   ░ ░    ░   ░ ░ ░ ▒          ░░   ▒ ░░      ░   ',
+      \ '         ░    ░  ░    ░ ░           ░   ░         ░   ',
+      \ '                                   ░                  ',
+      \ ]
+
+let g:startify_custom_header = 'startify#center(g:startify_ascii)'
+
 "}}}
 
-" PLUGINS======================================================================={{{
+" Blamer {{{
+
+let g:blamer_delay = 3000
+let g:blamer_prefix = ' >_ '
+let g:blamer_date_format = '%d/%m/%y'
+let g:blamer_template = '<author> <author-time> [<commit-short>]'
+"}}}
+
+"}}}
+
+" PLUGINS============================================================={{{
 
 call plug#begin('~/.vim/plugged')
 
-" UTILITIES=====================================================================
+" Functional==========================================================
 
+Plug 'tomtom/tcomment_vim' " For comments
 Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
-Plug 'neovimhaskell/haskell-vim' " Haskell stuff
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'apzelos/blamer.nvim' " Show git blame
+
+Plug 'neovimhaskell/haskell-vim' " Haskell stuff
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
 Plug 'plasticboy/vim-markdown' " Markdown mode
+Plug 'iamcco/markdown-preview.nvim' " Markdown preview
 
-" FUNCTIONALITY=================================================================
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-repeat' " Repeate actions
-Plug 'tomtom/tcomment_vim' " For comments
 Plug 'kana/vim-textobj-user' " TxtObj utility
 Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
 Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
-Plug 'iamcco/markdown-preview.nvim' " Markdown preview
 Plug 'alvan/vim-closetag' " Close tags auto (for html/xml)
+
 Plug 'christoomey/vim-tmux-navigator' " Smooth navigation with tmux
 
-" CUSTOMIZTION=================================================================
+" Visual==============================================================
 
+Plug 'morhetz/gruvbox' " The theme
+Plug 'mhinz/vim-startify' " Fancy start screen
 Plug 'vim-airline/vim-airline' " Airline status
-" Plug 'nanotech/jellybeans.vim' " The theme
-Plug 'morhetz/gruvbox' " The other theme
 
 call plug#end ()
 
 "}}}
 
-" THEME SETTINGS================================================================{{{
+" THEME SETTINGS======================================================{{{
 
 syntax on
 " colorscheme jellybeans 
@@ -170,7 +198,10 @@ hi Normal guibg=NONE ctermbg=NONE
 
 "}}}
 
-" COMMON SETTINGS==============================================================={{{
+" COMMON SETTINGS====================================================={{{
+
+" Disable strange Vi bindings
+set nocompatible
 
 " Search
 set hlsearch
@@ -266,7 +297,7 @@ set foldtext=MyFoldText()
 
 "}}}
 
-" MAPINGS======================================================================={{{
+" MAPINGS============================================================={{{
 
 " No arrows in normal mode
 nmap <Up> <Nop>
@@ -353,12 +384,12 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 "}}} 
 
-" RESET TO DEFAULT C++ FILE ==================================================={{{
+" RESET TO DEFAULT C++ FILE =========================================={{{
 
 autocmd filetype cpp map <F5> diei// By Stefan Radu<CR><CR>#include <bits/stdc++.h><CR><CR>using namespace std;<CR><CR>#define sz(x) (int)(x).size()<CR><CR>typedef pair < int, int > pii;<CR>typedef long long ll;<CR>typedef long double ld;<CR>typedef unsigned int ui;<CR>typedef unsigned long long ull;<CR><CR>int main() {<CR><CR>#ifdef STEF<CR>freopen("input", "r", stdin);<CR>freopen("output", "w", stdout);<CR>#endif<CR><CR>ios::sync_with_stdio(false);<CR>cin.tie(0);cout.tie(0);<CR><CR>}<ESC><ESC>k 
 "}}}
 
-" COMPILE======================================================================{{{
+" COMPILE============================================================={{{
 
 set shell=/bin/bash
 
