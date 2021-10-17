@@ -348,6 +348,9 @@ endfunction
 
 autocmd Filetype markdown nnoremap <CR> :call CreateFileLink() <CR>
 
+" Shortcut for search visually selected text
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
 "}}} 
 
 " RESET TO DEFAULT C++ FILE ==================================================={{{
