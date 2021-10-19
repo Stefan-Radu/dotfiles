@@ -22,17 +22,6 @@ let g:airline#extensions#tabline#enabled = 1
 
 "}}}
 
-" Markdown{{{
-
-set conceallevel=2
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_follow_anchor = 1
-let g:vim_markdown_new_list_item_indent = 0
-let g:vim_markdown_autowrite = 1
-let g:vim_markdown_auto_insert_bullets = 1
-
-"}}}
-
 " COC{{{
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -144,10 +133,12 @@ let g:startify_custom_header = 'startify#center(g:startify_ascii)'
 
 " Blamer {{{
 
+let g:blamer_enabled = 0
 let g:blamer_delay = 3000
 let g:blamer_prefix = ' >_ '
 let g:blamer_date_format = '%d/%m/%y'
 let g:blamer_template = '<author> <author-time> [<commit-short>]'
+
 "}}}
 
 "}}}
@@ -165,8 +156,6 @@ Plug 'apzelos/blamer.nvim' " Show git blame
 
 Plug 'neovimhaskell/haskell-vim' " Haskell stuff
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
-Plug 'plasticboy/vim-markdown' " Markdown mode
-Plug 'iamcco/markdown-preview.nvim' " Markdown preview
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
