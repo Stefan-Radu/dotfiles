@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
+export GOPATH=$HOME/.go
 PATH="$PATH"
-export PATH=~/Documents/projects/bin:/opt/android-studio/bin/:/opt/android-sdk/platform-tools:/opt/flutter/bin:$PATH
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:~/Documents/projects/bin:/opt/android-studio/bin/:/opt/android-sdk/platform-tools:/opt/flutter/bin
 
 fpath+=$HOME/.zsh/pure
 

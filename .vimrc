@@ -73,6 +73,19 @@ let g:coc_global_extensions = [
 
 "}}}
 
+" Markdown{{{
+
+set conceallevel=2
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_follow_anchor = 1
+let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_autowrite = 1
+let g:vim_markdown_auto_insert_bullets = 1
+
+let g:mkdp_refresh_slow = 1
+
+"}}}
+
 " NETRW {{{
 
 let g:netrw_banner = 0
@@ -154,8 +167,11 @@ Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
 Plug 'apzelos/blamer.nvim' " Show git blame
 
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Hello go
 Plug 'neovimhaskell/haskell-vim' " Haskell stuff
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
+Plug 'plasticboy/vim-markdown' " Markdown mode
+Plug 'iamcco/markdown-preview.vim' " Markdown preview
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
