@@ -7,6 +7,7 @@
   "diagnostic.refreshOnInsertMode": true,
   "javascript.suggestionActions.enabled": false,
   "python.linting.flake8Enabled": false
+/* "python.venvPath": "/home/stef/Documents/facultate_an3/venv" */
 /*   "suggest.minTriggerInputLength": 2, */
 /*   "suggest.maxCompleteItemCount": 10, */
 /*   "diagnostic.refreshAfterSave": true, */
