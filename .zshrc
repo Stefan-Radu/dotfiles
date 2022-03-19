@@ -42,7 +42,7 @@ export VISUAL='nvim'
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Custom
-export QUOTES_PATH="/home/stef/Documents/quotes.csv"
+export QUOTES_PATH="/home/stef/Documents/notes/quotes.md"
 
 alias vim=nvim
 alias quotes="$EDITOR $QUOTES_PATH"
@@ -51,6 +51,7 @@ alias chrome=chromium
 
 setopt rm_star_silent
 unalias rm
+unalias cp
 
 # taskwarrior completion & alias
 zstyle ':completion:*:*:task:*' verbose yes

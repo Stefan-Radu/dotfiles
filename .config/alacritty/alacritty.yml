@@ -6,6 +6,8 @@ window:
     columns: 0
     lines: 0
 
+  opacity: 0.8
+
   padding:
     x: 0
     y: 0
@@ -69,9 +71,6 @@ bell:
   animation: EaseOutExpo
   color: '0xffffff'
   duration: 0
-
-# Background opacity
-background_opacity: 0.8
 
 mouse:
   # Click settings

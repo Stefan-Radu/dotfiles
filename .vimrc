@@ -1,6 +1,6 @@
 " PLUGINS SETTINGS===================================================={{{
 
-" Jellybeans{{{
+" Jellybeans {{{
 
 let g:jellybeans_use_term_italics = 1
 let g:jellybeans_overrides = {
@@ -9,20 +9,20 @@ let g:jellybeans_overrides = {
 
 "}}}
 
-" Airline{{{
+" Airline {{{
 
 let g:airline#extensions#tabline#enabled = 1
 
 "}}}
 
-" Polyglot{{{
+" Polyglot {{{
 
 " Filetype detect I believe
 " let g:polyglot_disabled = ['ftdetect']
 
 "}}}
 
-" COC{{{
+" COC {{{
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -73,7 +73,7 @@ let g:coc_global_extensions = [
 
 "}}}
 
-" Markdown{{{
+" Markdown {{{
 
 set conceallevel=2
 let g:vim_markdown_folding_disabled = 1
@@ -83,6 +83,14 @@ let g:vim_markdown_autowrite = 1
 let g:vim_markdown_auto_insert_bullets = 1
 
 let g:mkdp_refresh_slow = 1
+
+"}}}
+
+" LaTeX {{{
+
+let g:livepreview_previewer = 'zathura'
+let g:livepreview_cursorhold_recompile = 0
+let g:livepreview_engine = 'lualatex'
 
 "}}}
 
@@ -172,6 +180,7 @@ Plug 'neovimhaskell/haskell-vim' " Haskell stuff
 Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
 Plug 'plasticboy/vim-markdown' " Markdown mode
 Plug 'iamcco/markdown-preview.vim' " Markdown preview
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' } " LaTeX preview
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
