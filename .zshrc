@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export GOPATH=$HOME/.go
 PATH="$PATH"
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:~/Documents/projects/bin:/opt/android-studio/bin/:/opt/android-sdk/platform-tools:/opt/flutter/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:~/Documents/bin:/opt/android-studio/bin/:/opt/android-sdk/platform-tools:/opt/flutter/bin
 
 fpath+=$HOME/.zsh/pure
 
@@ -59,8 +59,7 @@ alias t=task
 compdef _task t=task
 
 # At startup
-
-random_quote "$QUOTES_PATH" | cowsay -f tux | lolcat
+random_quote $QUOTES_PATH | cowsay -f tux | lolcat
 
 # Other plugins
 
