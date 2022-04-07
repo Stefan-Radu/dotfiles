@@ -6,7 +6,7 @@ window:
     columns: 0
     lines: 0
 
-  opacity: 0.8
+  opacity: 0.85
 
   padding:
     x: 0
@@ -42,7 +42,7 @@ draw_bold_text_with_bright_colors: false
 
 colors:
   primary:
-    background: '0x000000'
+    background: '0x111111'
     foreground: '0xf8f8f8'
 
   normal:

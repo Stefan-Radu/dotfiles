@@ -59,7 +59,7 @@ alias t=task
 compdef _task t=task
 
 # At startup
-random_quote $QUOTES_PATH | cowsay -f tux | lolcat
+random_quote $QUOTES_PATH | cowsay -f tux | lolcat -F 0.2 -t
 
 # Other plugins
 
