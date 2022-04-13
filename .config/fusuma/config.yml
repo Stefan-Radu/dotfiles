@@ -1,14 +1,14 @@
 swipe:
   3:
     left:
-      command: 'xdotool set_desktop --relative 1' # Switch to next workspace
+      sendkey: 'LEFTMETA+Y' # Switch to next workspace
       threshold: 0.7
     right:
-      command: 'xdotool set_desktop --relative 5' # Switch to previous workspace
+      sendkey: 'LEFTMETA+T' # Switch to previous workspace
       threshold: 0.7
     up:
-      command: 'xdotool key Control_L+F10' # Workspace overview
+      sendkey: 'LEFTCTRL+F10' # Workspace overview
       threshold: 0.7
     down:
-      command: 'xdotool key Control_L+F10' # Workspace overview
+      sendkey: 'LEFTCTRL+F10' # Workspace overview
       threshold: 0.7
