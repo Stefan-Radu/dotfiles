@@ -192,6 +192,7 @@ Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
 Plug 'alvan/vim-closetag' " Close tags auto (for html/xml)
 
 Plug 'christoomey/vim-tmux-navigator' " Smooth navigation with tmux
+Plug 'jasonccox/vim-wayland-clipboard' " Make clipboard usable in wayland
 
 " Visual==============================================================
 
@@ -206,7 +207,6 @@ call plug#end ()
 " THEME SETTINGS======================================================{{{
 
 syntax on
-" colorscheme jellybeans 
 colorscheme gruvbox 
 hi Normal guibg=NONE ctermbg=NONE
 
