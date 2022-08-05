@@ -269,6 +269,9 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
+" shift-tab for insert mode
+inoremap <S-Tab> <C-d>
+
 set cinoptions+=g0
 set cpoptions+=x
 
