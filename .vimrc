@@ -1,5 +1,7 @@
 " PLUGINS SETTINGS===================================================={{{
 
+filetype plugin on 
+
 " Jellybeans {{{
 
 let g:jellybeans_use_term_italics = 1
@@ -15,17 +17,20 @@ let g:airline#extensions#tabline#enabled = 1
 
 "}}}
 
-" Polyglot {{{
-
-" Filetype detect I believe
-" let g:polyglot_disabled = ['ftdetect']
-
-"}}}
-
 " COC {{{
 
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Use <tab> and <S-tab> to navigate completion list: >
+"function! s:check_back_space() abort
+"let col = col('.') - 1
+"return !col || getline('.')[col - 1]  =~ '\s'
+"endfunction
+
+"" Insert <tab> when previous text is space, refresh completion if not.
+"inoremap <silent><expr> <TAB>
+"\ coc#pum#visible() ? coc#pum#next(1):
+"\ <SID>check_back_space() ? "\<Tab>" :
+"\ coc#refresh()
+"inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -64,13 +69,11 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 let g:coc_global_extensions = [
       \'coc-html',
       \'coc-pyright',
-      \'coc-go',
       \'coc-json',
       \'coc-go',
       \'coc-css',
       \'coc-clangd',
       \]
-
 "}}}
 
 " Markdown {{{
@@ -91,6 +94,8 @@ let g:mkdp_refresh_slow = 1
 let g:livepreview_previewer = 'zathura'
 let g:livepreview_cursorhold_recompile = 0
 let g:livepreview_engine = 'lualatex'
+let g:livepreview_use_biber = 1
+let g:tex_flavor='latex'
 
 "}}}
 
@@ -129,26 +134,26 @@ let g:cabal_indent_section = 2
 
 " Startify {{{
 
-if winwidth(0) <= 120
-  let g:startify_padding_left = winwidth(0) / 6
-else
-  let g:startify_padding_left = winwidth(0) / 3
-endif
+"if winwidth(0) <= 120
+  "let g:startify_padding_left = winwidth(0) / 6
+"else
+  "let g:startify_padding_left = winwidth(0) / 3
+"endif
 
-let g:startify_ascii = [
-      \ ' ███▄    █ ▓█████  ▒█████      ██▒   █▓ ██▓ ███▄ ▄███▓',
-      \ ' ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒   ▓██░   █▒▓██▒▓██▒▀█▀ ██▒',
-      \ '▓██  ▀█ ██▒▒███   ▒██░  ██▒    ▓██  █▒░▒██▒▓██    ▓██░',
-      \ '▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░     ▒██ █░░░██░▒██    ▒██ ',
-      \ '▒██░   ▓██░░▒████▒░ ████▓▒░      ▒▀█░  ░██░▒██▒   ░██▒',
-      \ '░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░       ░ ▐░  ░▓  ░ ▒░   ░  ░',
-      \ '░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░       ░ ░░   ▒ ░░  ░      ░',
-      \ '   ░   ░ ░    ░   ░ ░ ░ ▒          ░░   ▒ ░░      ░   ',
-      \ '         ░    ░  ░    ░ ░           ░   ░         ░   ',
-      \ '                                   ░                  ',
-      \ ]
+"let g:startify_ascii = [
+      "\ ' ███▄    █ ▓█████  ▒█████      ██▒   █▓ ██▓ ███▄ ▄███▓',
+      "\ ' ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒   ▓██░   █▒▓██▒▓██▒▀█▀ ██▒',
+      "\ '▓██  ▀█ ██▒▒███   ▒██░  ██▒    ▓██  █▒░▒██▒▓██    ▓██░',
+      "\ '▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░     ▒██ █░░░██░▒██    ▒██ ',
+      "\ '▒██░   ▓██░░▒████▒░ ████▓▒░      ▒▀█░  ░██░▒██▒   ░██▒',
+      "\ '░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░       ░ ▐░  ░▓  ░ ▒░   ░  ░',
+      "\ '░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░       ░ ░░   ▒ ░░  ░      ░',
+      "\ '   ░   ░ ░    ░   ░ ░ ░ ▒          ░░   ▒ ░░      ░   ',
+      "\ '         ░    ░  ░    ░ ░           ░   ░         ░   ',
+      "\ '                                   ░                  ',
+      "\ ]
 
-let g:startify_custom_header = 'startify#center(g:startify_ascii)'
+"let g:startify_custom_header = 'startify#center(g:startify_ascii)'
 
 "}}}
 
@@ -168,37 +173,67 @@ let g:blamer_template = '<author> <author-time> [<commit-short>]'
 
 call plug#begin('~/.vim/plugged')
 
-" Functional==========================================================
+"Comment functions so powerful—no comment necessary.
+Plug 'scrooloose/nerdcommenter'
 
-Plug 'tomtom/tcomment_vim' " For comments
-Plug 'sheerun/vim-polyglot' " Sintax highlighting for everyhting
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompleter
-Plug 'apzelos/blamer.nvim' " Show git blame
+" Vim syntax highlighting for c, bison, flex
+Plug 'justinmk/vim-syntax-extra'
+" Enhanced version of the original Vim 6.1 Python syntax highlighting
+Plug 'vim-python/python-syntax'
+" Delete buffers and close files in Vim without messing up your layout.
+Plug 'moll/vim-bbye', { 'on': 'Bdelete' }
+" Show git blame
+Plug 'apzelos/blamer.nvim'
+" Pasting in Vim with indentation adjusted to destination context.
+Plug 'sickill/vim-pasta'
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Hello go
-Plug 'neovimhaskell/haskell-vim' " Haskell stuff
-Plug 'reisub0/hot-reload.vim' " Autoreloads flutter when saving
-Plug 'plasticboy/vim-markdown' " Markdown mode
-Plug 'iamcco/markdown-preview.vim' " Markdown preview
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' } " LaTeX preview
+" Intellisense engine for vim8 & neovim
+" Full language server protocol support as VSCode
+if has('nvim')
+    Plug 'neoclide/coc.nvim', {'branch': 'release',
+        \ 'for': ['c', 'cpp', 'python', 'json', 'tex', 'latex',
+        \ 'plaintex', 'context', 'bib', 'javascript', 'html',
+        \ 'css', 'yaml']}
+endif
 
+" Markdown mode
+Plug 'plasticboy/vim-markdown'
+" Markdown live preview
+Plug 'iamcco/markdown-preview.vim'
+
+" LaTeX live preview
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+" A modern Vim and neovim filetype plugin for LaTeX files.
+Plug 'lervag/vimtex', {'for': ['tex', 'context', 'bib', 'latex', 'plaintex']}
+
+" Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'tpope/vim-repeat' " Repeate actions
-Plug 'kana/vim-textobj-user' " TxtObj utility
-Plug 'kana/vim-textobj-entire' " Entire textojb -> ie / ae
-Plug 'kana/vim-textobj-line' " Line TextObj -> il / al
-Plug 'alvan/vim-closetag' " Close tags auto (for html/xml)
+" Repeate actions with <.> command
+Plug 'tpope/vim-repeat'
+" TxtObj utility - allows implementation of addition text objects
+Plug 'kana/vim-textobj-user'
+" Entire textojb -> ie / ae
+Plug 'kana/vim-textobj-entire'
+" Line TextObj -> il / al
+Plug 'kana/vim-textobj-line'
+" Even more text objects
+Plug 'wellle/targets.vim'
+" Close tags auto (for html/xml)
+Plug 'alvan/vim-closetag'
+" Surround text objects
+Plug 'tpope/vim-surround'
 
-Plug 'christoomey/vim-tmux-navigator' " Smooth navigation with tmux
-Plug 'jasonccox/vim-wayland-clipboard' " Make clipboard usable in wayland
+" Smooth navigation with tmux
+Plug 'christoomey/vim-tmux-navigator'
+" Make clipboard usable in wayland
+Plug 'jasonccox/vim-wayland-clipboard'
 
-" Visual==============================================================
-
-Plug 'morhetz/gruvbox' " The theme
-Plug 'mhinz/vim-startify' " Fancy start screen
-Plug 'vim-airline/vim-airline' " Airline status
+" Current chosen theme 
+Plug 'morhetz/gruvbox'
+" Airline - cool looking status bar
+Plug 'vim-airline/vim-airline'
 
 call plug#end ()
 
@@ -228,11 +263,12 @@ set infercase
 hi Search cterm=NONE ctermfg=black ctermbg=blue 
 
 " Indentation
-set tabstop=2
-set softtabstop=2
 set expandtab " Use spaces insted of tabs
 set shiftround " Use multiples of shiftwidth when << >> 
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
 set cinoptions+=g0
 set cpoptions+=x
 
@@ -284,8 +320,11 @@ set nobackup
 set noswapfile
 
 " Persistend undo
-set undodir=~/.vim/undodir
-set undofile
+if has('persistent_undo')
+    silent !mkdir -p ~/.vim/undodir > /dev/null 2>&1
+    set undodir=~/.vim/undodir
+    set undofile
+endif
 
 " Folding
 set foldlevelstart=0
@@ -319,13 +358,12 @@ nmap <Down> <Nop>
 nmap <Left> <Nop>
 nmap <Right> <Nop>
 
-" Resize buffer
-nnoremap <Leader>rd :vertical resize 150 <CR> 
-nnoremap <Leader>rs :vertical resize 59 <CR> 
-map <F8> <C-w>v<C-l><C-w>s<C-h><Leader>rd
+" Delete buffer
+" nnoremap <Leader>d :bd!<CR>
+" Use the plugin instead of the custom command
+nnoremap <Leader>d :Bdelete<CR>
 
-" Save and quit 
-nnoremap <Leader>d :bd!<CR>
+" Q does nothing instead of whatever annoying thing it did
 map Q <Nop>
 
 " Search
@@ -354,11 +392,20 @@ vnoremap <leader>P "+P
 " Clear search highlight
 nnoremap <silent> <Leader><Space> :noh<CR>
 
+" Treat visually wrapped lines as multiple lines.
+noremap j gj
+noremap k gk
+
+" Swap functionalities with above.
+noremap gj j
+noremap gk k
+
 " Navigate windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
 
 " Next buffer
 nnoremap <Tab> :bn<CR>
