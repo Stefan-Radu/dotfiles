@@ -2,15 +2,6 @@
 
 filetype plugin on 
 
-" Jellybeans {{{
-
-let g:jellybeans_use_term_italics = 1
-let g:jellybeans_overrides = {
-\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-\}
-
-"}}}
-
 " Airline {{{
 
 let g:airline#extensions#tabline#enabled = 1
