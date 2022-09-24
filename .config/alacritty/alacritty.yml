@@ -31,7 +31,7 @@ font:
   italic:
     family: "Fantasque Sans Mono"
     style: Italic
-  size: 12.0
+  size: 14.0
   use_thin_strokes: true
   #offset:
     #x: 0
@@ -168,7 +168,7 @@ mouse:
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
   # When set to `true`, selected text will be copied to the primary clipboard.
-  save_to_clipboard: false
+  save_to_clipboard: true
 
 # Mouse bindings
 #

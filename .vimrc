@@ -181,10 +181,7 @@ Plug 'sickill/vim-pasta'
 " Intellisense engine for vim8 & neovim
 " Full language server protocol support as VSCode
 if has('nvim')
-    Plug 'neoclide/coc.nvim', {'branch': 'release',
-        \ 'for': ['c', 'cpp', 'python', 'json', 'tex', 'latex',
-        \ 'plaintex', 'context', 'bib', 'javascript', 'html',
-        \ 'css', 'yaml']}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
 " Markdown mode
