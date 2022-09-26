@@ -10,18 +10,17 @@ let g:airline#extensions#tabline#enabled = 1
 
 " COC {{{
 
-" Use <tab> and <S-tab> to navigate completion list: >
-"function! s:check_back_space() abort
-"let col = col('.') - 1
-"return !col || getline('.')[col - 1]  =~ '\s'
-"endfunction
+" Use tab and s-tab for completion
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-"" Insert <tab> when previous text is space, refresh completion if not.
-"inoremap <silent><expr> <TAB>
-"\ coc#pum#visible() ? coc#pum#next(1):
-"\ <SID>check_back_space() ? "\<Tab>" :
-"\ coc#refresh()
-"inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -256,9 +255,6 @@ set shiftround " Use multiples of shiftwidth when << >>
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-
-" shift-tab for insert mode
-inoremap <S-Tab> <C-d>
 
 set cinoptions+=g0
 set cpoptions+=x
