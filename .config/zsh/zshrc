@@ -1,0 +1,133 @@
+
+#                         88                               
+#                         88                               
+#                         88                               
+#     888888888 ,adPPYba, 88,dPPYba,  8b,dPPYba,  ,adPPYba,
+#          a8P" I8[    "" 88P'    "8a 88P'   "Y8 a8"     ""
+#       ,d8P'    `"Y8ba,  88       88 88         8b        
+#     ,d8"      aa    ]8I 88       88 88         "8a,   ,aa
+#     888888888 `"YbbdP"' 88       88 88          `"Ybbd8"'
+
+#   =========================================================
+
+
+append_to_path() {
+    if [[ -d $1 ]]; then
+        export PATH="$PATH:$1"
+    fi
+}
+
+# Path stuff
+
+export GOPATH=$HOME/.go
+
+append_to_path $GOROOT/bin
+append_to_path $GOPATH/bin
+append_to_path /opt/android-sdk/platform-tools
+append_to_path /opt/flutter/bin
+append_to_path ~/.local/bin
+
+# Zplug - plugin manager
+#=======================================================
+
+# install zplug if it doesn't exist
+if [[ ! -d ~/.zplug ]];then
+    git clone https://github.com/b4b4r07/zplug ~/.zplug
+fi
+# start zplug
+source ~/.zplug/init.zsh
+
+# Plugins list
+#=======================================================
+
+# Let zplug manage zplug
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+# Async for zsh, used by pure
+zplug "mafredri/zsh-async", from:github, defer:0
+# Load completion library for those sweet [tab] squares
+zplug "lib/completion", from:oh-my-zsh
+# Syntax highlighting for commands, load last
+zplug "zdharma/fast-syntax-highlighting", from:github, defer:3
+# substring hisotory search
+zplug "zsh-users/zsh-history-substring-search", from:github
+# colorful manual pages
+zplug 'ael-code/zsh-colored-man-pages', from:github
+# command not found - suggest how to install
+zplug 'lib/command-not-found', from:oh-my-zsh
+# thefuck
+zplug 'nvbn/thefuck', from:github
+
+# Theme!
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
+zplug load
+
+# Actually install plugins, prompt user input
+if ! zplug check --verbose; then
+    printf "Install zplug plugins? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Settings
+#=======================================================
+
+export TERM="xterm-256color"
+
+setopt rm_star_silent
+
+# Pure prompt settings
+zstyle :prompt:pure:path color '#FFBE63'
+zstyle :prompt:pure:prompt:success color '#964879' 
+
+# use terminal color on completion
+eval "$(dircolors)"
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# Preferred editor for local and remote sessions
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+# custom vars
+export QUOTES_PATH="/home/stef/Documents/notes/quotes.md"
+
+# taskwarrior completion
+zstyle ':completion:*:*:task:*' verbose yes
+compdef _task t=task
+
+# history settings
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+# bind substring search keys
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+# make thefuck work
+eval $(thefuck --alias)
+
+# Aliases
+#=======================================================
+
+alias la=ls -lah
+alias mv=mv -i # prompt before override
+alias t=task
+alias vim=nvim
+alias ls="ls --color=auto"
+alias quotes="$EDITOR $QUOTES_PATH"
+alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+# At startup
+#=======================================================
+
+# random quote print
+random_quote $QUOTES_PATH | cowsay -f tux | lolcat -F 0.2 -t
