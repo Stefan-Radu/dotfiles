@@ -45,7 +45,7 @@ if ! zgenom saved; then
     # Async for zsh, used by pure
     zgenom load mafredri/zsh-async
     # Load completion library for those sweet [tab] squares
-    zgenom load zsh-users/zsh-completions
+    zgenom ohmyzsh lib/completion.zsh
     # Syntax highlighting for commands, load last
     zgenom load zdharma/fast-syntax-highlighting
     # substring hisotory search
@@ -90,6 +90,9 @@ export QUOTES_PATH="/home/stef/Documents/notes/quotes.md"
 # taskwarrior completion
 zstyle ':completion:*:*:task:*' verbose yes
 compdef _task t=task
+
+# allow reverse completion with s-tab
+bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # history settings
 HISTFILE=~/.zsh_history
