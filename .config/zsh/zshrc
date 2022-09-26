@@ -27,47 +27,38 @@ append_to_path /opt/android-sdk/platform-tools
 append_to_path /opt/flutter/bin
 append_to_path ~/.local/bin
 
-# Zplug - plugin manager
+# ZGenom - plugin manager 
 #=======================================================
 
-# install zplug if it doesn't exist
-if [[ ! -d ~/.zplug ]];then
-    git clone https://github.com/b4b4r07/zplug ~/.zplug
+if [[ ! -f "${HOME}/.zgenom/zgenom.zsh" ]]; then
+  git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom"
 fi
-# start zplug
-source ~/.zplug/init.zsh
+source "${HOME}/.zgenom/zgenom.zsh"
 
-# Plugins list
-#=======================================================
+# check for updates ever 7 days
+zgenom autoupdate
+	  		  
+# only runs when .zgenom/sources/init.zsh doesn't exist
+# zgenom reset - delete init.zsh
 
-# Let zplug manage zplug
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-# Async for zsh, used by pure
-zplug "mafredri/zsh-async", from:github, defer:0
-# Load completion library for those sweet [tab] squares
-zplug "lib/completion", from:oh-my-zsh
-# Syntax highlighting for commands, load last
-zplug "zdharma/fast-syntax-highlighting", from:github, defer:3
-# substring hisotory search
-zplug "zsh-users/zsh-history-substring-search", from:github
-# colorful manual pages
-zplug 'ael-code/zsh-colored-man-pages', from:github
-# command not found - suggest how to install
-zplug 'lib/command-not-found', from:oh-my-zsh
-# thefuck
-zplug 'nvbn/thefuck', from:github
+if ! zgenom saved; then  
+    # Async for zsh, used by pure
+    zgenom load mafredri/zsh-async
+    # Load completion library for those sweet [tab] squares
+    zgenom load zsh-users/zsh-completions
+    # Syntax highlighting for commands, load last
+    zgenom load zdharma/fast-syntax-highlighting
+    # substring hisotory search
+    zgenom load zsh-users/zsh-history-substring-search
+    # colorful manual pages
+    zgenom load ael-code/zsh-colored-man-pages
+    # command not found - suggest how to install
+    zgenom ohmyzsh plugins/command-not-found
+    # Theme!
+    zgenom load sindresorhus/pure
 
-# Theme!
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-
-zplug load
-
-# Actually install plugins, prompt user input
-if ! zplug check --verbose; then
-    printf "Install zplug plugins? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+    # save all to init script
+    zgenom save
 fi
 
 # Settings
@@ -118,7 +109,7 @@ eval $(thefuck --alias)
 # Aliases
 #=======================================================
 
-alias la=ls -lah
+alias la="ls -lah"
 alias mv=mv -i # prompt before override
 alias t=task
 alias vim=nvim
