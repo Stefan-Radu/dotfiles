@@ -21,7 +21,7 @@ scrolling:
   multiplier: 3
 
 font:
-  scale_with_dpi: false
+  scale_with_dpi: true
   normal:
     family: "Fantasque Sans Mono"
     style: Normal
@@ -32,7 +32,7 @@ font:
     family: "Fantasque Sans Mono"
     style: Italic
   size: 14.0
-  use_thin_strokes: true
+  AppleFontSmoothing: true
   #offset:
     #x: 0
     #y: 0

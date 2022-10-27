@@ -157,6 +157,16 @@ let g:blamer_template = '<author> <author-time> [<commit-short>]'
 
 "}}}
 
+" Goyo {{{
+
+" Get keep transparent background when using goyo
+function! s:goyo_leave()
+         hi Normal guibg=NONE ctermbg=NONE
+endfunction
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+"}}}
+
 "}}}
 
 " PLUGINS============================================================={{{
@@ -187,6 +197,8 @@ endif
 Plug 'plasticboy/vim-markdown'
 " Markdown live preview
 Plug 'iamcco/markdown-preview.vim'
+" For writing
+Plug 'junegunn/goyo.vim'
 
 " LaTeX live preview
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
