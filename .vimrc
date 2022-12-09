@@ -57,13 +57,15 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 
 " extensions
 let g:coc_global_extensions = [
-      \'coc-html',
-      \'coc-pyright',
-      \'coc-json',
-      \'coc-go',
-      \'coc-css',
-      \'coc-clangd',
-      \]
+    \'coc-css',
+    \'coc-go',
+    \'coc-html',
+    \'coc-json',
+    \'coc-pyright',
+    \'coc-sh',
+    \'coc-texlab',
+    \'coc-tsserver',
+    \]
 "}}}
 
 " Markdown {{{
@@ -204,6 +206,11 @@ Plug 'junegunn/goyo.vim'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 " A modern Vim and neovim filetype plugin for LaTeX files.
 Plug 'lervag/vimtex', {'for': ['tex', 'context', 'bib', 'latex', 'plaintex']}
+
+" Lean Theorem Prover thingies
+Plug 'Julian/lean.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim'
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

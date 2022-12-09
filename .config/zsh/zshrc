@@ -28,6 +28,7 @@ append_to_path $GOPATH/bin
 append_to_path /opt/android-sdk/platform-tools
 append_to_path /opt/flutter/bin
 append_to_path ~/.local/bin
+append_to_path /home/stef/.elan/toolchains/leanprover--lean4---stable/bin
 
 # ZGenom - plugin manager 
 #=======================================================
