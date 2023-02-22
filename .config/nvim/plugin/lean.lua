@@ -68,7 +68,7 @@ require('lean').setup{
 
     -- Set infoview windows' starting dimensions.
     -- Windows are opened horizontally or vertically depending on spacing.
-    width = 30,
+    width = 40,
     height = 20,
 
     -- Put the infoview on the top or bottom when horizontal?
