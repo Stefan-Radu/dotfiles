@@ -1,6 +1,17 @@
-" PLUGINS SETTINGS===================================================={{{
+" CRITICAL SETTINGS =================================================={{{
 
 filetype plugin on 
+syntax on
+
+" Disable strange Vi bindings
+set nocompatible
+
+" Remap leader key
+let mapleader=';'
+
+"}}}
+ 
+" PLUGINS SETTINGS===================================================={{{
 
 " Airline {{{
 
@@ -80,6 +91,9 @@ let g:vim_markdown_auto_insert_bullets = 1
 
 let g:mkdp_refresh_slow = 1
 
+" maybe inspect this?
+" let g:markdown_folding = 1
+
 "}}}
 
 " LaTeX {{{
@@ -103,8 +117,8 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
 
 " Fzf {{{
 
-nnoremap <leader>f :GFiles<Cr>
-nnoremap <leader>F :FZF<Cr>
+nnoremap <leader>F :GFiles<Cr>
+nnoremap <leader>f :FZF<Cr>
 
 "}}}
 
@@ -170,6 +184,31 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 "}}}
 
+" VimWiki {{{
+
+let g:vimwiki_key_mappings = { 
+            \ 'table_mappings': 0,
+            \ 'links': 0, }
+
+let g:vimwiki_list = [{'path': '~/Documents/notes/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+
+" Makes vimwiki markdown links as [text](text.md) instead of [text](text)
+let g:vimwiki_markdown_link_ext = 1
+
+" Only files in wiki path use vimwiki tools
+let g:vimwiki_global_ext = 0
+
+nnoremap <CR> <Plug>VimwikiFollowLink
+nnoremap <leader>ws <Plug>VimwikiVSplitLink
+nnoremap <C-o> <Plug>VimwikiGoBackLink
+nnoremap <leader>wn <Plug>VimwikiNextLink
+nnoremap <leader>wp <Plug>VimwikiPrevLink
+nnoremap <leader>wd <Plug>VimwikiDeleteFile
+nnoremap <leader>wr <Plug>VimwikiRenameFile
+
+"}}}
+
 "}}}
 
 " PLUGINS============================================================={{{
@@ -202,6 +241,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.vim'
 " For writing
 Plug 'junegunn/goyo.vim'
+" Tasks
+Plug 'vimwiki/vimwiki'
 
 " LaTeX live preview
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
@@ -229,8 +270,6 @@ Plug 'kana/vim-textobj-line'
 Plug 'wellle/targets.vim'
 " Close tags auto (for html/xml)
 Plug 'alvan/vim-closetag'
-" Surround text objects
-Plug 'tpope/vim-surround'
 
 " Smooth navigation with tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -247,17 +286,13 @@ call plug#end ()
 "}}}
 
 " THEME SETTINGS======================================================{{{
-
-syntax on
-colorscheme gruvbox 
+colorscheme gruvbox
+"set background=light   " Setting light mode
 hi Normal guibg=NONE ctermbg=NONE
 
 "}}}
 
-" COMMON SETTINGS====================================================={{{
-
-" Disable strange Vi bindings
-set nocompatible
+" COMMON SETTINGS====================================================={{{.md)
 
 " Search
 set hlsearch
@@ -413,39 +448,11 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-
 " Next buffer
 nnoremap <Tab> :bn<CR>
 
 " Previous buffer
 nnoremap <S-Tab> :bp<CR>
-
-" Enter create file link like in vimwiki
-function! CreateFileLink()
-    let vim_wiki_extension = ".md"
-
-    let current_line = getline('.')
-    if stridx(current_line, vim_wiki_extension) >= 0
-      return
-    endif
-
-    if stridx(current_line, "*") >= 0 ||
-          \ stridx(current_line, "-") >= 0 ||
-          \ stridx(current_line, " ") >= 0 ||
-          \ stridx(current_line, "#") >= 0
-      return
-    endif
-
-    execute "normal! 0i["
-    execute "normal! $a]"
-    execute "normal! bbyi[$pF]a("
-    execute "normal! $a" . vim_wiki_extension
-    execute "normal! $a)"
-    execute "normal! 0"
-
-endfunction
-
-autocmd Filetype markdown nnoremap <CR> :call CreateFileLink() <CR>
 
 " Shortcut for search visually selected text
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
