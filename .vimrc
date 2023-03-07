@@ -77,6 +77,7 @@ let g:coc_global_extensions = [
     \'coc-sh',
     \'coc-texlab',
     \'coc-tsserver',
+    \'coc-java',
     \]
 "}}}
 
@@ -90,9 +91,6 @@ let g:vim_markdown_autowrite = 1
 let g:vim_markdown_auto_insert_bullets = 1
 
 let g:mkdp_refresh_slow = 1
-
-" maybe inspect this?
-" let g:markdown_folding = 1
 
 "}}}
 
@@ -199,6 +197,17 @@ let g:vimwiki_markdown_link_ext = 1
 " Only files in wiki path use vimwiki tools
 let g:vimwiki_global_ext = 0
 
+let g:vimwiki_folding='list:quick'
+autocmd FileType vimwiki setlocal foldmethod=expr | 
+            \ setlocal foldenable | 
+
+" Save and restore manual folds when we exit a file
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave *.md mkview
+  autocmd BufWinEnter *.md silent! loadview
+augroup END
+
 nnoremap <CR> <Plug>VimwikiFollowLink
 nnoremap <leader>ws <Plug>VimwikiVSplitLink
 nnoremap <C-o> <Plug>VimwikiGoBackLink
@@ -253,6 +262,9 @@ Plug 'lervag/vimtex', {'for': ['tex', 'context', 'bib', 'latex', 'plaintex']}
 Plug 'Julian/lean.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
+
+" Dafny
+Plug 'mlr-msft/vim-loves-dafny', {'for': 'dafny'}
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -370,6 +382,7 @@ endif
 
 " Folding
 set foldlevelstart=0
+
 set foldmethod=marker
 
 function! MyFoldText() " 
