@@ -122,7 +122,7 @@ alias vim=nvim
 alias ls="ls --color=auto"
 alias quotes="$EDITOR $QUOTES_PATH"
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias wiki="cd ~/Documents/notes && nvim -c VimwikiIndex; cd $OLDPWD"
+alias wiki="pushd >/dev/null && cd ~/Documents/notes && nvim -c VimwikiIndex && popd >/dev/null"
 
 # At startup
 #=======================================================
