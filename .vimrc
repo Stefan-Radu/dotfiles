@@ -214,6 +214,9 @@ nnoremap <leader>wp <Plug>VimwikiPrevLink
 nnoremap <leader>wd <Plug>VimwikiDeleteFile
 nnoremap <leader>wr <Plug>VimwikiRenameFile
 
+autocmd FileType vimwiki 
+            \ autocmd TextChanged <buffer> silent write
+
 "}}}
 
 "}}}
