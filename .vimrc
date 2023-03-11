@@ -90,8 +90,6 @@ let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_autowrite = 1
 let g:vim_markdown_auto_insert_bullets = 1
 
-let g:mkdp_refresh_slow = 1
-
 "}}}
 
 " LaTeX {{{
@@ -244,10 +242,8 @@ if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
-" Markdown mode
-Plug 'plasticboy/vim-markdown'
-" Markdown live preview
-Plug 'iamcco/markdown-preview.vim'
+" Markdown live preview in browser
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " For writing
 Plug 'junegunn/goyo.vim'
 " Tasks
@@ -263,7 +259,7 @@ Plug 'Julian/lean.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 
-" Dafny
+" Dafny TODO de dezinstalat cand termin cu labul
 Plug 'mlr-msft/vim-loves-dafny', {'for': 'dafny'}
 
 " Fuzzy finder
