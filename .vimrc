@@ -135,6 +135,16 @@ let g:cabal_indent_section = 2
 
 "}}}
 
+" Lean {{{
+
+" needed for lean shortcuts
+let maplocalleader = ";" 
+
+" Disable CoC Diagnostics for lean as it's taken care of from Julian/lean
+au FileType lean let b:coc_diagnostic_disable=1
+
+"}}}
+
 " Startify {{{
 
 "if winwidth(0) <= 120
@@ -195,24 +205,26 @@ let g:vimwiki_markdown_link_ext = 1
 " Only files in wiki path use vimwiki tools
 let g:vimwiki_global_ext = 0
 
-let g:vimwiki_folding='list:quick'
+let g:markdown_folding = 1
+
+" faster list folding
+let g:vimwiki_folding='custom'
 autocmd FileType vimwiki setlocal foldmethod=expr | 
             \ setlocal foldenable | 
 
 " Save and restore manual folds when we exit a file
 augroup remember_folds
-  autocmd!
-  autocmd BufWinLeave *.md mkview
-  autocmd BufWinEnter *.md silent! loadview
+    autocmd!
+    autocmd BufWinLeave *.md mkview
+    autocmd BufWinEnter *.md silent! loadview
+    au Filetype vimwiki nnoremap <CR> <Plug>VimwikiFollowLink
+    au Filetype vimwiki nnoremap <C-o> <Plug>VimwikiGoBackLink
+    au Filetype vimwiki nnoremap <leader>ws <Plug>VimwikiVSplitLink
+    au Filetype vimwiki nnoremap <leader>wn <Plug>VimwikiNextLink
+    au Filetype vimwiki nnoremap <leader>wp <Plug>VimwikiPrevLink
+    au Filetype vimwiki nnoremap <leader>wd <Plug>VimwikiDeleteFile
+    au Filetype vimwiki nnoremap <leader>wr <Plug>VimwikiRenameFile
 augroup END
-
-nnoremap <CR> <Plug>VimwikiFollowLink
-nnoremap <leader>ws <Plug>VimwikiVSplitLink
-nnoremap <C-o> <Plug>VimwikiGoBackLink
-nnoremap <leader>wn <Plug>VimwikiNextLink
-nnoremap <leader>wp <Plug>VimwikiPrevLink
-nnoremap <leader>wd <Plug>VimwikiDeleteFile
-nnoremap <leader>wr <Plug>VimwikiRenameFile
 
 autocmd FileType vimwiki 
             \ autocmd TextChanged <buffer> silent write
@@ -286,6 +298,9 @@ Plug 'alvan/vim-closetag'
 Plug 'christoomey/vim-tmux-navigator'
 " Make clipboard usable in wayland
 Plug 'jasonccox/vim-wayland-clipboard'
+
+" Makes folding faster
+Plug 'konfekt/fastfold'
 
 " Current chosen theme 
 Plug 'morhetz/gruvbox'

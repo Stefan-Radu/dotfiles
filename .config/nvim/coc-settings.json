@@ -19,6 +19,12 @@
                 "directory": "/tmp/ccls"
                 }
             }
+        },
+        "lake": {
+            "command": "lake",
+            "args": ["serve"],
+            "filetypes": ["lean"]
         }
-    }
+    },
+    "java.import.gradle.java.home": "/usr/lib/jvm/java-17-openjdk"
 }
