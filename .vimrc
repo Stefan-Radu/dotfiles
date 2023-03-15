@@ -8,6 +8,7 @@ set nocompatible
 
 " Remap leader key
 let mapleader=';'
+let maplocalleader="<leader>"
 
 "}}}
  
@@ -17,6 +18,16 @@ let mapleader=';'
 
 let g:airline_theme='gruvbox'
 let g:airline#extensions#tabline#enabled = 1
+
+"}}}
+
+" Blamer {{{
+
+let g:blamer_enabled = 0
+let g:blamer_delay = 3000
+let g:blamer_prefix = ' >_ '
+let g:blamer_date_format = '%d/%m/%y'
+let g:blamer_template = '<author> <author-time> [<commit-short>]'
 
 "}}}
 
@@ -81,40 +92,20 @@ let g:coc_global_extensions = [
     \]
 "}}}
 
-" Markdown {{{
-
-set conceallevel=2
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_follow_anchor = 1
-let g:vim_markdown_new_list_item_indent = 0
-let g:vim_markdown_autowrite = 1
-let g:vim_markdown_auto_insert_bullets = 1
-
-"}}}
-
-" LaTeX {{{
-
-let g:livepreview_previewer = 'zathura'
-let g:livepreview_cursorhold_recompile = 0
-let g:livepreview_engine = 'lualatex'
-let g:livepreview_use_biber = 1
-let g:tex_flavor='latex'
-
-"}}}
-
-" NETRW {{{
-
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 0
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
-
-"}}}
-
 " Fzf {{{
 
 nnoremap <leader>F :GFiles<Cr>
 nnoremap <leader>f :FZF<Cr>
+
+"}}}
+
+" Goyo {{{
+
+" Get keep transparent background when using goyo
+function! s:goyo_leave()
+         hi Normal guibg=NONE ctermbg=NONE
+endfunction
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 "}}}
 
@@ -135,13 +126,40 @@ let g:cabal_indent_section = 2
 
 "}}}
 
+" LaTeX {{{
+
+let g:livepreview_previewer = 'zathura'
+let g:livepreview_cursorhold_recompile = 0
+let g:livepreview_engine = 'lualatex'
+let g:livepreview_use_biber = 1
+let g:tex_flavor='latex'
+
+"}}}
+
 " Lean {{{
 
 " needed for lean shortcuts
 let maplocalleader = ";" 
 
 " Disable CoC Diagnostics for lean as it's taken care of from Julian/lean
-au FileType lean let b:coc_diagnostic_disable=1
+augroup lean_stuff
+    au FileType lean let b:coc_diagnostic_disable=1
+    au FileType lean nnoremap <silent> <localleader>i :LeanInfoviewToggle<CR>
+    au FileType lean nnoremap <silent> <localleader>s :LeanSorryFill<CR>
+    "au FileType lean nnoremap <silent> <localleader>x :LeanInfoviewAddPin<CR>
+    "au FileType lean nnoremap <silent> <localleader>c :LeanInfoviewClearPins<CR>
+augroup END
+
+"}}}
+
+" Markdown {{{
+
+set conceallevel=2
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_follow_anchor = 1
+let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_autowrite = 1
+let g:vim_markdown_auto_insert_bullets = 1
 
 "}}}
 
@@ -170,26 +188,6 @@ au FileType lean let b:coc_diagnostic_disable=1
 
 "}}}
 
-" Blamer {{{
-
-let g:blamer_enabled = 0
-let g:blamer_delay = 3000
-let g:blamer_prefix = ' >_ '
-let g:blamer_date_format = '%d/%m/%y'
-let g:blamer_template = '<author> <author-time> [<commit-short>]'
-
-"}}}
-
-" Goyo {{{
-
-" Get keep transparent background when using goyo
-function! s:goyo_leave()
-         hi Normal guibg=NONE ctermbg=NONE
-endfunction
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-"}}}
-
 " VimWiki {{{
 
 let g:vimwiki_key_mappings = { 
@@ -201,22 +199,15 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown'
 
 " Makes vimwiki markdown links as [text](text.md) instead of [text](text)
 let g:vimwiki_markdown_link_ext = 1
-
 " Only files in wiki path use vimwiki tools
 let g:vimwiki_global_ext = 0
-
 let g:markdown_folding = 1
-
-" faster list folding
 let g:vimwiki_folding='custom'
-autocmd FileType vimwiki setlocal foldmethod=expr | 
-            \ setlocal foldenable | 
 
-" Save and restore manual folds when we exit a file
-augroup remember_folds
-    autocmd!
-    autocmd BufWinLeave *.md mkview
-    autocmd BufWinEnter *.md silent! loadview
+augroup vimwiki_stuff
+    au! 
+
+    " mappings
     au Filetype vimwiki nnoremap <CR> <Plug>VimwikiFollowLink
     au Filetype vimwiki nnoremap <C-o> <Plug>VimwikiGoBackLink
     au Filetype vimwiki nnoremap <leader>ws <Plug>VimwikiVSplitLink
@@ -224,10 +215,14 @@ augroup remember_folds
     au Filetype vimwiki nnoremap <leader>wp <Plug>VimwikiPrevLink
     au Filetype vimwiki nnoremap <leader>wd <Plug>VimwikiDeleteFile
     au Filetype vimwiki nnoremap <leader>wr <Plug>VimwikiRenameFile
-augroup END
 
-autocmd FileType vimwiki 
-            \ autocmd TextChanged <buffer> silent write
+    " autosave
+    au FileType vimwiki 
+            \ au TextChanged <buffer> silent write
+    " faster list folding
+    au FileType vimwiki setlocal foldmethod=expr | 
+            \ setlocal foldenable | 
+augroup END
 
 "}}}
 
@@ -311,14 +306,12 @@ call plug#end ()
 
 "}}}
 
-" THEME SETTINGS======================================================{{{
+" SETTINGS====================================================={{{.md)
+
+" Theme
 colorscheme gruvbox
 "set background=light   " Setting light mode
 hi Normal guibg=NONE ctermbg=NONE
-
-"}}}
-
-" COMMON SETTINGS====================================================={{{.md)
 
 " Search
 set hlsearch
@@ -394,6 +387,12 @@ if has('persistent_undo')
     set undofile
 endif
 
+" NETRW
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 0
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
+
 " Folding
 set foldlevelstart=0
 
@@ -416,6 +415,13 @@ function! MyFoldText() "
 endfunction " 
 
 set foldtext=MyFoldText()
+
+" Save and restore manual folds when we exit a file
+augroup remeber_folds
+    au!
+    au BufWinLeave *.md mkview
+    au BufWinEnter *.md silent! loadview
+augroup END
 
 "}}}
 

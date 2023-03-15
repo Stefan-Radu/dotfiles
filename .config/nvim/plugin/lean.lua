@@ -54,7 +54,7 @@ require('lean').setup{
   -- Enable suggested mappings?
   --
   -- false by default, true to enable
-  mappings = true,
+  mappings = false,
 
   -- Infoview support
   infoview = {
