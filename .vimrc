@@ -94,8 +94,10 @@ let g:coc_global_extensions = [
 
 " Fzf {{{
 
-nnoremap <leader>F :GFiles<Cr>
-nnoremap <leader>f :FZF<Cr>
+nnoremap <leader>ff :Files<Cr>
+nnoremap <leader>fg :GitFiles<Cr>
+nnoremap <leader>fb :Buffers<Cr>
+nnoremap <leader>fh :History<Cr>
 
 "}}}
 
@@ -154,12 +156,63 @@ augroup END
 
 " Markdown {{{
 
+" List mark function {{{
+
+function! ListMarkToggle()
+    let l:line = getline('.')
+
+    let l:no_mark_expr = '\v^\s*[-*]\s+\w.*'
+    let l:empty_mark_expr = '\v^\s*[-*] \[ \]\s+\w.*'
+    let l:x_mark_expr = '\v^\s*[-*] \[X\]\s+\w.*'
+
+    if l:line =~ l:no_mark_expr
+        " check if line is list item with no mark
+        " insert empty mark
+        silent execute 's/\v[-*]/& [ ]/|norm!``'
+    elseif l:line =~ l:empty_mark_expr
+        " check if line is list item with no mark
+        " replace with full mark
+        silent execute 's/\[ \]/[X]/|norm!``'
+    elseif l:line =~ l:x_mark_expr
+        " check if line is list item full mark
+        " replace with empty mark
+        silent execute 's/\[X\]/[ ]/|norm!``'
+    endif
+endfunction
+
+function! ListMarkRemove()
+    let l:line = getline('.')
+    let l:mark_expr = '\v^\s*[-*] \[[X ]\]\s+\w.*'
+
+    if l:line =~ l:mark_expr
+        " check if line is list item any mark
+        " remove mark
+        silent execute 's/ \[[X ]\]//|norm!``'
+    endif
+endfunction
+
+" }}}
+
 set conceallevel=2
 let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_follow_anchor = 1
 let g:vim_markdown_new_list_item_indent = 0
-let g:vim_markdown_autowrite = 1
-let g:vim_markdown_auto_insert_bullets = 1
+let g:vim_markdown_no_default_key_mappings = 1
+
+augroup markdown_stuff
+    au!
+    " autosave
+    au FileType markdown au TextChanged <buffer> silent write
+    " fold lists
+    au FileType markdown setlocal foldmethod=indent | setlocal foldenable 
+    " Save and restore manual folds when we exit a file 
+    au BufWinLeave *.md mkview
+    au BufWinEnter *.md silent! loadview
+    " List marks
+    au FileType markdown 
+                \ nnoremap <silent> <leader>lt :call ListMarkToggle()<CR>
+    au FileType markdown 
+                \ nnoremap <silent> <leader>lr :call ListMarkRemove()<CR>
+augroup END
 
 "}}}
 
@@ -188,43 +241,15 @@ let g:vim_markdown_auto_insert_bullets = 1
 
 "}}}
 
-" VimWiki {{{
+" Wiki {{{
 
-let g:vimwiki_key_mappings = { 
-            \ 'table_mappings': 0,
-            \ 'links': 0, }
+let g:wiki_root = '~/Documents/notes'
+let g:wiki_filetypes = ['md']
+let g:wiki_link_extension = '.md'
+let g:wiki_completion_case_sensitive = 0
+let g:wiki_link_target_type = 'md'
 
-let g:vimwiki_list = [{'path': '~/Documents/notes/', 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-
-" Makes vimwiki markdown links as [text](text.md) instead of [text](text)
-let g:vimwiki_markdown_link_ext = 1
-" Only files in wiki path use vimwiki tools
-let g:vimwiki_global_ext = 0
-let g:markdown_folding = 1
-let g:vimwiki_folding='custom'
-
-augroup vimwiki_stuff
-    au! 
-
-    " mappings
-    au Filetype vimwiki nnoremap <CR> <Plug>VimwikiFollowLink
-    au Filetype vimwiki nnoremap <C-o> <Plug>VimwikiGoBackLink
-    au Filetype vimwiki nnoremap <leader>ws <Plug>VimwikiVSplitLink
-    au Filetype vimwiki nnoremap <leader>wn <Plug>VimwikiNextLink
-    au Filetype vimwiki nnoremap <leader>wp <Plug>VimwikiPrevLink
-    au Filetype vimwiki nnoremap <leader>wd <Plug>VimwikiDeleteFile
-    au Filetype vimwiki nnoremap <leader>wr <Plug>VimwikiRenameFile
-
-    " autosave
-    au FileType vimwiki 
-            \ au TextChanged <buffer> silent write
-    " faster list folding
-    au FileType vimwiki setlocal foldmethod=expr | 
-            \ setlocal foldenable | 
-augroup END
-
-"}}}
+" }}}
 
 "}}}
 
@@ -252,12 +277,14 @@ if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
+" Markdown syntax
+Plug 'preservim/vim-markdown'
 " Markdown live preview in browser
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " For writing
 Plug 'junegunn/goyo.vim'
-" Tasks
-Plug 'vimwiki/vimwiki'
+" Wiki plugin
+Plug 'lervag/wiki.vim'
 
 " LaTeX live preview
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
@@ -294,9 +321,6 @@ Plug 'christoomey/vim-tmux-navigator'
 " Make clipboard usable in wayland
 Plug 'jasonccox/vim-wayland-clipboard'
 
-" Makes folding faster
-Plug 'konfekt/fastfold'
-
 " Current chosen theme 
 Plug 'morhetz/gruvbox'
 " Airline - cool looking status bar
@@ -306,7 +330,7 @@ call plug#end ()
 
 "}}}
 
-" SETTINGS====================================================={{{.md)
+" SETTINGS============================================================{{{
 
 " Theme
 colorscheme gruvbox
@@ -373,8 +397,10 @@ set listchars=tab:\ \ ,eol:¬ " End of line character
 set cursorline " Highlight current line
 set encoding=utf-8
 set updatetime=300
+
+" Formatting settings
 autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+au FileType .c setlocal fo=croq
 
 " Don't backup
 set nobackup
@@ -415,13 +441,6 @@ function! MyFoldText() "
 endfunction " 
 
 set foldtext=MyFoldText()
-
-" Save and restore manual folds when we exit a file
-augroup remeber_folds
-    au!
-    au BufWinLeave *.md mkview
-    au BufWinEnter *.md silent! loadview
-augroup END
 
 "}}}
 
