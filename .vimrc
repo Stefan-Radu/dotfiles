@@ -260,8 +260,10 @@ call plug#begin('~/.vim/plugged')
 "Comment functions so powerful—no comment necessary.
 Plug 'scrooloose/nerdcommenter'
 
-" Vim syntax highlighting for c, bison, flex
+" Syntax highlighting for c, bison, flex
 Plug 'justinmk/vim-syntax-extra'
+" Syntax for Haskell
+Plug 'neovimhaskell/haskell-vim'
 " Enhanced version of the original Vim 6.1 Python syntax highlighting
 Plug 'vim-python/python-syntax'
 " Delete buffers and close files in Vim without messing up your layout.
@@ -295,9 +297,6 @@ Plug 'lervag/vimtex', {'for': ['tex', 'context', 'bib', 'latex', 'plaintex']}
 Plug 'Julian/lean.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
-
-" Dafny TODO de dezinstalat cand termin cu labul
-Plug 'mlr-msft/vim-loves-dafny', {'for': 'dafny'}
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -399,8 +398,8 @@ set encoding=utf-8
 set updatetime=300
 
 " Formatting settings
-autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
-au FileType .c setlocal fo=croq
+au FileType * setlocal fo-=cro
+au FileType c,cpp setlocal fo=croq
 
 " Don't backup
 set nobackup
