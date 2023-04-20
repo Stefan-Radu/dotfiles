@@ -211,7 +211,7 @@ augroup markdown_stuff
     au FileType markdown 
                 \ nnoremap <silent> <leader>lt :call ListMarkToggle()<CR>
     au FileType markdown 
-                \ nnoremap <silent> <leader>lr :call ListMarkRemove()<CR>
+                \ nnoremap <silent> <leader>ld :call ListMarkRemove()<CR>
 augroup END
 
 "}}}
@@ -508,12 +508,10 @@ nnoremap <S-Tab> :bp<CR>
 " Shortcut for search visually selected text
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
+" Default cpp algo template
+autocmd filetype cpp map <F5> :0r ~/.vim/templates/cpp_algo.cpp<CR>Gddk
+
 "}}} 
-
-" RESET TO DEFAULT C++ FILE =========================================={{{
-
-autocmd filetype cpp map <F5> diei// By Stefan Radu<CR><CR>#include <bits/stdc++.h><CR><CR>using namespace std;<CR><CR>#define sz(x) (int)(x).size()<CR><CR>typedef pair < int, int > pii;<CR>typedef long long ll;<CR>typedef long double ld;<CR>typedef unsigned int ui;<CR>typedef unsigned long long ull;<CR><CR>int main() {<CR><CR>#ifdef STEF<CR>freopen("input", "r", stdin);<CR>freopen("output", "w", stdout);<CR>#endif<CR><CR>ios::sync_with_stdio(false);<CR>cin.tie(0);cout.tie(0);<CR><CR>}<ESC><ESC>k 
-"}}}
 
 " COMPILE============================================================={{{
 
