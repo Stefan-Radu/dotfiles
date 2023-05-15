@@ -17,9 +17,6 @@
             "initializationOptions": {
                 "cache": {
                     "directory": "/tmp/ccls"
-                },
-                "clang": { 
-                    "extraArgs": [ "-include-directory ./include/" ] 
                 }
             }
         },

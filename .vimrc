@@ -96,6 +96,7 @@ let g:coc_global_extensions = [
 
 nnoremap <leader>ff :Files<Cr>
 nnoremap <leader>fg :GitFiles<Cr>
+nnoremap <leader>fr :Rg<Cr>
 nnoremap <leader>fb :Buffers<Cr>
 nnoremap <leader>fh :History<Cr>
 

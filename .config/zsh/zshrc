@@ -115,12 +115,13 @@ eval $(thefuck --alias)
 
 alias la="ls -lah"
 alias mv=mv -i # prompt before override
-alias t=vit
+alias t=task
 alias ls="ls --color=auto"
 alias quotes="$EDITOR $QUOTES_PATH"
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias wiki="pushd >/dev/null && cd ~/Documents/notes && nvim -c WikiIndex && popd >/dev/null"
 alias nb=newsboat
+alias open=xdg-open
 
 # At startup
 #=======================================================
