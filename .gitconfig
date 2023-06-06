@@ -1,0 +1,17 @@
+[user]
+	email = stefan270101@gmail.com
+	name = Stefan Radu
+[status]
+	showUntrackedFiles = no
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[pull]
+	rebase = false
+[credential]
+	helper = cache
+[init]
+	defaultBranch = master
+[commit]
+	template = /home/stef/.vim/templates/commit-conventions.txt
+[core]
+	editor = nvim +17 -c startinsert
