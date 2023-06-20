@@ -1,9 +1,0 @@
-https://hnrss.org/best "~Hacker News" "news"
-https://www.unixsheikh.com/feed.rss "blog"
-https://ciechanow.ski/atom.xml "~Ciechanowski Blog" "blog"
-https://www.biziday.ro/feed "~Biziday" "news"
-https://buletin.de/bucuresti/feed/ "~Buletin de Bucuresti" "news"
-https://recorder.ro/feed "~Recorder" "news"
-
-https://commons.wikimedia.org/w/api.php?action=featuredfeed&feed=potd&feedformat=rss&language=en "~Wikimedia Commons POD"
-https://xkcd.com/rss.xml
