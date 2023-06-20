@@ -199,21 +199,7 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_no_default_key_mappings = 1
 
-augroup markdown_stuff
-    au!
-    " autosave
-    au FileType markdown au TextChanged <buffer> silent write
-    " fold lists
-    au FileType markdown setlocal foldmethod=indent | setlocal foldenable 
-    " Save and restore manual folds when we exit a file 
-    au BufWinLeave *.md mkview
-    au BufWinEnter *.md silent! loadview
-    " List marks
-    au FileType markdown 
-                \ nnoremap <silent> <leader>lt :call ListMarkToggle()<CR>
-    au FileType markdown 
-                \ nnoremap <silent> <leader>ld :call ListMarkRemove()<CR>
-augroup END
+" more settings in <SETTINGS> as we need loaded plugins
 
 "}}}
 
@@ -441,6 +427,26 @@ function! MyFoldText() "
 endfunction " 
 
 set foldtext=MyFoldText()
+
+augroup markdown_stuff
+    au!
+    " autosave
+    au FileType markdown au TextChanged <buffer> silent write
+    " fold lists
+    au FileType markdown setlocal foldmethod=indent | setlocal foldenable 
+    " Save and restore manual folds when we exit a file 
+    au BufWinLeave *.md mkview
+    au BufWinEnter *.md silent! loadview
+    " List marks
+    noremap <silent> <Plug>ListMarkToggleMap :call ListMarkToggle()<CR>
+                \:call repeat#set("\<Plug>ListMarkToggleMap")<CR>
+    noremap <silent> <Plug>ListMarkRemoveMap :call ListMarkRemove()<CR>
+                \:call repeat#set("\<Plug>ListMarkRemoveMap")<CR>
+
+    au FileType markdown noremap <leader>lt <Plug>ListMarkToggleMap
+    au FileType markdown noremap <leader>ld <Plug>ListMarkRemoveMap
+augroup END
+
 
 "}}}
 
