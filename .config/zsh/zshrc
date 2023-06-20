@@ -29,6 +29,7 @@ append_to_path /opt/android-sdk/platform-tools
 append_to_path /opt/flutter/bin
 append_to_path ~/.local/bin
 append_to_path /home/stef/.elan/toolchains/leanprover--lean4---stable/bin
+append_to_path /home/stef/.local/share/gem/ruby/3.0.0/bin
 
 # ZGenom - plugin manager 
 #=======================================================
@@ -86,7 +87,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 
 # custom vars
-export QUOTES_PATH="/home/stef/Documents/notes/quotes.md"
+export QUOTES_PATH="/home/stef/Documents/notes/quotes.txt"
 
 # taskwarrior completion
 zstyle ':completion:*:*:task:*' verbose yes
@@ -128,7 +129,7 @@ alias open=xdg-open
 
 # random quote print
 if [[ -z $TMUX ]]; then
-    random_quote $QUOTES_PATH | cowsay -f tux | lolcat -F 0.2 -t
+    random_quote -f $QUOTES_PATH | cowsay -f tux | lolcat -F 0.2 -t
 fi
 
 if [[ -n "$BENCHMARK" ]];then
