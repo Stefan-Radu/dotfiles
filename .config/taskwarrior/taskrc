@@ -77,6 +77,7 @@ report.week.sort=end-
 # Custom attributes
 
 urgency.annotations.coefficient=0 # Default 1
+urgency.tags.coefficient=0 # Default 1
 urgency.age.coefficient=0.5 # Default 2
 urgency.blocked.coefficient=-15 # Default: -5
 urgency.uda.priority.L.coefficient=-3 # Default 1.8
