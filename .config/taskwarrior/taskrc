@@ -3,36 +3,86 @@
 # For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
 # 'man task-sync' or 'man taskrc'
 
+# Use the command 'task show' to see all defaults and overrides
+
 # Here is an example of entries that use the default, override and blank values
 #   variable=foo   -- By specifying a value, this overrides the default
 #   variable=      -- By specifying no value, this means no default
 #   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
 
+# Cool Examples
+
+# # UDAs - aka user defined attributes
+# uda.energy.type=string
+# uda.energy.label=Energy
+# uda.energy.values=H,M,L
+  
+# uda.issue.type=numeric
+# uda.issue.label=Issue
+  
+# # urgency coefficients for tags
+# urgency.user.tag.bug.coefficient = 9.0 # same as blocking
+# urgency.user.tag.refactor.coefficient = 5.0 # slighly less important than bugs
+# urgency.user.tag.data.coefficient = 3.0 # slightly less important than client
+
+######################################################################
+
 # Preferences 
 alias.burndown=burndown.daily
-confirmation=0
+active.indicator=<
+weekstart=Monday
+dateformat=D-M-Y
+
+# Reports
+
 default.command=ready
-report.ready.filter=+READY
-report.next.filter=status:pending limit:27
-urgency.tags.coefficient=0
-urgency.annotations.coefficient=0
-urgency.blocking.coefficient=0
-urgency.scheduled.coefficient=2
-urgency.due.coefficient=15
-urgency.project.coefficient=0
-urgency.age.coefficient=0.5
-urgency.active.coefficient=10
-urgency.uda.priority.L.coefficient=-1.8
-urgency.uda.priority.M.coefficient=3.6
-urgency.uda.priority.H.coefficient=10
+
+## ready [default]
+report.ready.columns=id,priority,due.relative,project,tags.list,description,urgency,start.active
+report.ready.labels=ID,P,Due,Project,Tags,Description,Urg,A
+
+## next
+report.next.columns=id,priority,scheduled.relative,due.relative,project,tags.list,description,urgency,start.active
+report.next.labels=ID,P,Sch,Due,Project,Tags,Description,Urg,A
+report.next.filter=status:pending -BLOCKED -WAITING
+
+## list
+report.list.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.formatted,due.relative,until.remaining,description,urgency
+report.list.labels=ID,Active,Age,D,P,Project,Tags,R,Sch,Due,Until,Description,Urg
+report.list.sort=start-,due+,project+,tags+,urgency-
+
+## Custom Reports
+
+### Today
+report.today.description=Done Today
+report.today.columns=end.age,tags.list,project.full,description.combined,priority,entry.age
+report.today.labels=Completed,Tags,Project,Description,Priority,Age
+report.today.filter=status:completed end.after:today -meta
+report.today.sort=end-
+
+### Yesterday
+report.yesterday.description=Done Yesterday
+report.yesterday.columns=end.age,tags.list,project.full,description.combined,priority,entry.age
+report.yesterday.labels=Completed,Tags,Project,Description,Priority,Age
+report.yesterday.filter=status:completed end.before:today end.after:yesterday -meta
+report.yesterday.sort=end-
+
+### Week
+report.week.description=Done this week
+report.week.columns=end.age,tags.list,project.full,description.combined,priority,entry.age
+report.week.labels=Completed,Tags,Project,Description,Priority,Age
+report.week.filter=status:completed end.before:tomorrow end.after:sow -meta
+report.week.sort=end-
+
+# Custom attributes
+
+urgency.annotations.coefficient=0 # Default 1
+urgency.age.coefficient=0.5 # Default 2
+urgency.blocked.coefficient=-15 # Default: -5
+urgency.uda.priority.L.coefficient=-3 # Default 1.8
+
 urgency.uda.tag.promis.coefficient=7
-report.ready.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,due.relative,until.remaining,description,urgency
-report.ready.labels=ID,Active,Age,D,P,Project,Tags,R,Due!,Until,Description,Urg
 
-# Use the command 'task show' to see all defaults and overrides
-
-# Files
-data.location=~/.task
 #Sync
 taskd.certificate=~/.task/cert/private.certificate.pem
 taskd.key=~/.task/cert/private.key.pem
@@ -41,7 +91,10 @@ taskd.server=inthe.am:53589
 taskd.credentials=inthe_am/stefan270101/769cf0ab-fff3-4826-a0fb-c5b28492cebc
 taskd.trust=strict
 
-# Color theme (uncomment one to use)
+# Files
+data.location=~/.task
+
+# Color Theme (uncomment one to use)
 # include /usr/share/doc/task/rc/light-16.theme
 # include /usr/share/doc/task/rc/light-256.theme
 # include /usr/share/doc/task/rc/dark-16.theme
@@ -49,11 +102,12 @@ taskd.trust=strict
 # include /usr/share/doc/task/rc/dark-red-256.theme
 # include /usr/share/doc/task/rc/dark-green-256.theme
 # include /usr/share/doc/task/rc/dark-blue-256.theme
-# include /usr/share/doc/task/rc/dark-violets-256.theme
+include /usr/share/doc/task/rc/dark-violets-256.theme
 # include /usr/share/doc/task/rc/dark-yellow-green.theme
-include /usr/share/doc/task/rc/dark-gray-256.theme
+# include /usr/share/doc/task/rc/dark-gray-256.theme
 # include /usr/share/doc/task/rc/dark-gray-blue-256.theme
 # include /usr/share/doc/task/rc/solarized-dark-256.theme
 # include /usr/share/doc/task/rc/solarized-light-256.theme
 # include /usr/share/doc/task/rc/no-color.theme
+
 news.version=2.6.0
