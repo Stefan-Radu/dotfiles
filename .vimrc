@@ -302,8 +302,8 @@ Plug 'wellle/targets.vim'
 " Close tags auto (for html/xml)
 Plug 'alvan/vim-closetag'
 
-" Smooth navigation with tmux
-Plug 'christoomey/vim-tmux-navigator'
+" Smooth navigation with kitty terminal splits
+Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
 " Make clipboard usable in wayland
 Plug 'jasonccox/vim-wayland-clipboard'
 
@@ -405,6 +405,9 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 0
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
 
+" Views
+set viewdir=~/.vim/views/
+
 " Folding
 set foldlevelstart=0
 
@@ -433,20 +436,18 @@ augroup markdown_stuff
     " autosave
     au FileType markdown au TextChanged <buffer> silent write
     " fold lists
-    au FileType markdown setlocal foldmethod=indent | setlocal foldenable 
+    au Filetype markdown setlocal foldmethod=indent | setlocal foldenable 
     " Save and restore manual folds when we exit a file 
     au BufWinLeave *.md mkview
     au BufWinEnter *.md silent! loadview
     " List marks
-    noremap <silent> <Plug>ListMarkToggleMap :call ListMarkToggle()<CR>
+    au FileType markdown noremap <silent> <Plug>ListMarkToggleMap :call ListMarkToggle()<CR>
                 \:call repeat#set("\<Plug>ListMarkToggleMap")<CR>
-    noremap <silent> <Plug>ListMarkRemoveMap :call ListMarkRemove()<CR>
+    au FileType markdown noremap <silent> <Plug>ListMarkRemoveMap :call ListMarkRemove()<CR>
                 \:call repeat#set("\<Plug>ListMarkRemoveMap")<CR>
-
     au FileType markdown noremap <leader>lt <Plug>ListMarkToggleMap
     au FileType markdown noremap <leader>ld <Plug>ListMarkRemoveMap
 augroup END
-
 
 "}}}
 
