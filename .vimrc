@@ -203,6 +203,13 @@ let g:vim_markdown_no_default_key_mappings = 1
 
 "}}}
 
+" Polyglot {{{
+
+let g:polyglot_disabled = ['haskell', 'markdown']
+let g:polyglot_disabled = ['autoindent']
+
+" }}}
+
 " Startify {{{
 
 "if winwidth(0) <= 120
@@ -247,12 +254,10 @@ call plug#begin('~/.vim/plugged')
 "Comment functions so powerful—no comment necessary.
 Plug 'scrooloose/nerdcommenter'
 
-" Syntax highlighting for c, bison, flex
-Plug 'justinmk/vim-syntax-extra'
+" Syntax for everything
+Plug 'sheerun/vim-polyglot'
 " Syntax for Haskell
 Plug 'neovimhaskell/haskell-vim'
-" Enhanced version of the original Vim 6.1 Python syntax highlighting
-Plug 'vim-python/python-syntax'
 " Delete buffers and close files in Vim without messing up your layout.
 Plug 'moll/vim-bbye', { 'on': 'Bdelete' }
 " Show git blame
@@ -502,10 +507,11 @@ noremap gj j
 noremap gk k
 
 " Navigate windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" Not necessary due to vim-kitty plugin
+"nnoremap <C-h> <C-w>h
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
+"nnoremap <C-l> <C-w>l
 
 " Next buffer
 nnoremap <Tab> :bn<CR>
