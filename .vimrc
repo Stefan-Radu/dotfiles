@@ -458,12 +458,6 @@ augroup END
 
 " MAPINGS============================================================={{{
 
-" No arrows in normal mode
-nmap <Up> <Nop>
-nmap <Down> <Nop>
-nmap <Left> <Nop>
-nmap <Right> <Nop>
-
 " Delete buffer
 " nnoremap <Leader>d :bd!<CR>
 " Use the plugin instead of the custom command
