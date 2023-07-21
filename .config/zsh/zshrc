@@ -52,7 +52,7 @@ if ! zgenom saved; then
     zgenom ohmyzsh lib/completion.zsh
     # Syntax highlighting for commands, load last
     zgenom load zdharma/fast-syntax-highlighting
-    # substring hisotory search
+    # substring history search
     zgenom load zsh-users/zsh-history-substring-search
     # colorful manual pages
     zgenom load ael-code/zsh-colored-man-pages
@@ -81,6 +81,8 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
+# fix backspace in vi mode
+bindkey "^?" backward-delete-char
 
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
@@ -108,16 +110,26 @@ bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+# make reverse history search use what I already typed
+_history-incremental-search-backward () {
+    zle .history-incremental-search-backward $BUFFER
+}
+zle -N history-incremental-search-backward _history-incremental-search-backward
+
+# bash shortcut for reverse history search
+bindkey "^R" history-incremental-search-backward
+
 # make thefuck work
 eval $(thefuck --alias)
 
 # Aliases
 #=======================================================
 
-alias la="ls -lah"
+alias ls="ls --color=auto"
+alias la="ls -lAh"
+alias ll="ls -lh"
 alias mv=mv -i # prompt before override
 alias t=task
-alias ls="ls --color=auto"
 alias quotes="$EDITOR $QUOTES_PATH"
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias wiki="pushd >/dev/null && cd ~/Documents/notes && nvim -c WikiIndex && popd >/dev/null"
