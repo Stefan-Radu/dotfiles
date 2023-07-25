@@ -1,6 +1,7 @@
 [user]
 	email = stefan270101@gmail.com
 	name = Stefan Radu
+	signingkey = 86F1AEE935C9E4E0
 [status]
 	showUntrackedFiles = no
 [alias]
@@ -13,5 +14,6 @@
 	defaultBranch = master
 [commit]
 	template = /home/stef/.vim/templates/commit-conventions.txt
+	gpgsign = true
 [core]
 	editor = nvim +17 -c startinsert
