@@ -164,7 +164,7 @@ function! ListMarkToggle()
 
     let l:no_mark_expr = '\v^\s*[-*]\s+\w.*'
     let l:empty_mark_expr = '\v^\s*[-*] \[ \]\s+\w.*'
-    let l:x_mark_expr = '\v^\s*[-*] \[X\]\s+\w.*'
+    let l:x_mark_expr = '\v^\s*[-*] \[[xX]\]\s+\w.*'
 
     if l:line =~ l:no_mark_expr
         " check if line is list item with no mark
@@ -177,18 +177,18 @@ function! ListMarkToggle()
     elseif l:line =~ l:x_mark_expr
         " check if line is list item full mark
         " replace with empty mark
-        silent execute 's/\[X\]/[ ]/|norm!``'
+        silent execute 's/\[[xX]\]/[ ]/|norm!``'
     endif
 endfunction
 
 function! ListMarkRemove()
     let l:line = getline('.')
-    let l:mark_expr = '\v^\s*[-*] \[[X ]\]\s+\w.*'
+    let l:mark_expr = '\v^\s*[-*] \[[xX ]\]\s+\w.*'
 
     if l:line =~ l:mark_expr
         " check if line is list item any mark
         " remove mark
-        silent execute 's/ \[[X ]\]//|norm!``'
+        silent execute 's/ \[[xX ]\]//|norm!``'
     endif
 endfunction
 
@@ -363,7 +363,7 @@ function! HighlightLongLines()
   endif
 endfunction
 
-autocmd BufEnter * call HighlightLongLines()
+"autocmd BufEnter * call HighlightLongLines()
 
 " Find file
 set wildmenu
