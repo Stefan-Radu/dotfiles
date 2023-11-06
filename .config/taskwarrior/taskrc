@@ -38,12 +38,12 @@ dateformat=D-M-Y
 default.command=ready
 
 ## ready [default]
-report.ready.columns=id,priority,due.relative,project,tags.list,description,urgency,start.active
-report.ready.labels=ID,P,Due,Project,Tags,Description,Urg,A
+report.ready.columns=id,priority,due.relative,project,tags.list,description,urgency,start.active,recur.indicator
+report.ready.labels=ID,P,Due,Project,Tags,Description,Urg,A,R
 
 ## next
-report.next.columns=id,priority,scheduled.relative,due.relative,project,tags.list,description,urgency,start.active
-report.next.labels=ID,P,Sch,Due,Project,Tags,Description,Urg,A
+report.next.columns=id,priority,scheduled.relative,due.relative,project,tags.list,description,urgency,start.active,recur.indicator
+report.next.labels=ID,P,Sch,Due,Project,Tags,Description,Urg,A,R
 report.next.filter=status:pending -BLOCKED -WAITING
 
 ## list
@@ -76,13 +76,19 @@ report.week.sort=end-
 
 # Custom attributes
 
-urgency.annotations.coefficient=0 # Default 1
-urgency.tags.coefficient=0 # Default 1
+urgency.annotations.coefficient=0.0 # Default 1
+urgency.tags.coefficient=0.0 # Default 1
 urgency.age.coefficient=0.5 # Default 2
 urgency.blocked.coefficient=-15 # Default: -5
+urgency.due.coefficient=10 # Default: 12.0
+
+color.uda.priority.P=rgb503
+uda.priority.values=P,H,M,L, # Default H,M,L
+urgency.uda.priority.P.coefficient=8.0
 urgency.uda.priority.L.coefficient=-3 # Default 1.8
 
-urgency.uda.tag.promis.coefficient=7
+# urgency.uda.priority.M.coefficient 3.9
+# urgency.uda.priority.H.coefficient 6.0
 
 #Sync
 taskd.certificate=~/.task/cert/private.certificate.pem
