@@ -90,6 +90,7 @@ export VISUAL='nvim'
 
 # custom vars
 export QUOTES_PATH="/home/stef/Documents/notes/quotes.txt"
+export GPG_TTY=$(tty)
 
 # taskwarrior completion
 zstyle ':completion:*:*:task:*' verbose yes
@@ -128,13 +129,18 @@ eval $(thefuck --alias)
 alias ls="ls --color=auto"
 alias la="ls -lAh"
 alias ll="ls -lh"
-alias mv=mv -i # prompt before override
+# prompt before override
+alias mv=mv -i
 alias t=task
 alias quotes="$EDITOR $QUOTES_PATH"
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias wiki="pushd >/dev/null && cd ~/Documents/notes && nvim -c WikiIndex && popd >/dev/null"
 alias nb=newsboat
 alias open=xdg-open
+alias smallpdf="ps2pdf -dPDFSETTINGS=/ebook"
+# use kitty wrapper shen connecting to ssh. 
+# more here https://sw.kovidgoyal.net/kitty/kittens/ssh/
+alias ssh=kitten ssh
 
 # At startup
 #=======================================================
