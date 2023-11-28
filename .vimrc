@@ -513,6 +513,11 @@ nnoremap <Tab> :bn<CR>
 " Previous buffer
 nnoremap <S-Tab> :bp<CR>
 
+" Keep default behavior for <c-i> - forward navigation in jump-list
+" extra terminal settings needed to sepparate <tab> from <c-i>
+" but I'm so happy this actually works. I've had this broken for years
+nnoremap <c-i> <c-i>
+
 " Shortcut for search visually selected text
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
