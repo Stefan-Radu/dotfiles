@@ -30,6 +30,7 @@ append_to_path /opt/flutter/bin
 append_to_path ~/.local/bin
 append_to_path /home/stef/.elan/toolchains/leanprover--lean4---stable/bin
 append_to_path /home/stef/.local/share/gem/ruby/3.0.0/bin
+append_to_path /usr/lib/llvm14/bin
 
 # ZGenom - plugin manager 
 #=======================================================
@@ -140,7 +141,7 @@ alias open=xdg-open
 alias smallpdf="ps2pdf -dPDFSETTINGS=/ebook"
 # use kitty wrapper shen connecting to ssh. 
 # more here https://sw.kovidgoyal.net/kitty/kittens/ssh/
-alias ssh=kitten ssh
+alias ssh="kitten ssh"
 
 # At startup
 #=======================================================
