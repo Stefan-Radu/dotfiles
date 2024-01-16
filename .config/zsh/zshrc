@@ -142,15 +142,19 @@ alias smallpdf="ps2pdf -dPDFSETTINGS=/ebook"
 # use kitty wrapper shen connecting to ssh. 
 # more here https://sw.kovidgoyal.net/kitty/kittens/ssh/
 alias ssh="kitten ssh"
+alias nmrestart="sudo systemctl restart NetworkManager"
 
 # At startup
 #=======================================================
 
 # random quote print
-if [[ -z $TMUX ]]; then
-    random_quote -f $QUOTES_PATH | cowsay -f tux | lolcat -F 0.2 -t
+# *spawn only on the first instance (no tmux,
+# and no secondary kitty windows)
+
+if [ -z $TMUX ]; then
+    random_quote -f $QUOTES_PATH | cowsay -f tux | lolcat -F 0.2 -t 
 fi
 
-if [[ -n "$BENCHMARK" ]];then
+if [[ -n "$BENCHMARK" ]]; then
     zprof > "$HOME/.zsh_benchmark"
 fi

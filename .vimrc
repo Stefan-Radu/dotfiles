@@ -1,5 +1,6 @@
 " CRITICAL SETTINGS =================================================={{{
 
+" %TODO this line seems to break lean for example. watch out for it
 filetype plugin on 
 syntax on
 
@@ -81,15 +82,15 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " extensions
 let g:coc_global_extensions = [
     \'coc-css',
-    \'coc-go',
+    \'coc-rust-analyzer',
     \'coc-html',
     \'coc-json',
     \'coc-pyright',
     \'coc-sh',
-    \'coc-texlab',
-    \'coc-tsserver',
-    \'coc-java',
-    \]
+    \'coc-texlab']
+    "\'coc-go',
+    "\'coc-tsserver',
+    "\'coc-java',
 "}}}
 
 " Fzf {{{
@@ -99,6 +100,7 @@ nnoremap <leader>fg :GitFiles<Cr>
 nnoremap <leader>fr :Rg<Cr>
 nnoremap <leader>fb :Buffers<Cr>
 nnoremap <leader>fh :History<Cr>
+inoremap <c-x><c-p> <plug>(fzf-complete-file)
 
 "}}}
 
@@ -109,6 +111,8 @@ function! s:goyo_leave()
          hi Normal guibg=NONE ctermbg=NONE
 endfunction
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+let g:goyo_width = '65%'
 
 "}}}
 
@@ -282,8 +286,6 @@ Plug 'lervag/wiki.vim'
 
 " LaTeX live preview
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-" A modern Vim and neovim filetype plugin for LaTeX files.
-Plug 'lervag/vimtex', {'for': ['tex', 'context', 'bib', 'latex', 'plaintex']}
 
 " Lean Theorem Prover thingies
 Plug 'Julian/lean.nvim'
@@ -308,7 +310,9 @@ Plug 'wellle/targets.vim'
 Plug 'alvan/vim-closetag'
 
 " Smooth navigation with kitty terminal splits
-Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
+" Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
+" Smooth navigation with tmux splits
+Plug 'christoomey/vim-tmux-navigator'
 " Make clipboard usable in wayland
 Plug 'jasonccox/vim-wayland-clipboard'
 
@@ -506,6 +510,9 @@ noremap gk k
 "nnoremap <C-j> <C-w>j
 "nnoremap <C-k> <C-w>k
 "nnoremap <C-l> <C-w>l
+
+" suspend
+nnoremap <leader>z <c-z>
 
 " Next buffer
 nnoremap <Tab> :bn<CR>

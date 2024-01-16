@@ -77,14 +77,16 @@ report.week.sort=end-
 # Custom attributes
 
 urgency.annotations.coefficient=0.0 # Default 1
-urgency.tags.coefficient=0.0 # Default 1
+urgency.tags.coefficient=0.2 # Default 1
 urgency.age.coefficient=0.5 # Default 2
 urgency.blocked.coefficient=-15 # Default: -5
 urgency.due.coefficient=10 # Default: 12.0
 
-color.uda.priority.P=rgb503
-uda.priority.values=P,H,M,L, # Default H,M,L
-urgency.uda.priority.P.coefficient=8.0
+color.uda.priority.I=rgb503
+color.uda.priority.U=rgb503
+uda.priority.values=I,U,H,M,L, # Default H,M,L
+urgency.uda.priority.I.coefficient=8.0
+urgency.uda.priority.U.coefficient=10.0
 urgency.uda.priority.L.coefficient=-3 # Default 1.8
 
 # urgency.uda.priority.M.coefficient 3.9

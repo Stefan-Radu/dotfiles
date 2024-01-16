@@ -9,6 +9,7 @@
     "javascript.suggestionActions.enabled": false,
     "python.linting.flake8Enabled": false,
     "python.analysis.useLibraryCodeForTypes": false,
+    "pyright.reportWildcardImportFromLibrary": "none",
     "languageserver": {
         "ccls": {
             "command": "ccls",
