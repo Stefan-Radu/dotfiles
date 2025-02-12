@@ -16,11 +16,26 @@ bind-key U show-urls
 bind-key ; macro-prefix
 
 # Open macros
-browser librewolf
-macro y set browser "mpv %u" ; open-in-browser ; set browser librewolf
-macro w set browser "w3m" ; open-in-browser ; set browser librewolf
-macro f set browser "feh" ; open-in-browser ; set browser librewolf
+browser mullvad-browser
+macro y set browser "mpv %u" ; open-in-browser ; set browser mullvad-browser
+macro w set browser "w3m" ; open-in-browser ; set browser mullvad-browser
+macro f set browser "feh" ; open-in-browser ; set browser mullvad-browser
+
+# Remote Freshrss
+urls-source "freshrss"
+freshrss-url "https://freshrss.mehanix.duckdns.org/api/greader.php"
+freshrss-login "stef"
+freshrss-passwordfile ~/.config/newsboat/.password
+freshrss-min-items 100
+freshrss-flag-star "s"
+freshrss-show-special-feeds "false"
 
 # Other settings
+show-read-feeds yes
+show-read-articles yes
+#auto-reload no
+#prepopulate-query-feeds yes
+#refresh-on-startup yes
 reload-threads 10
 cache-file ~/.config/newsboat/cache.db
+highlight feedlist ".*0/0.." default default invis

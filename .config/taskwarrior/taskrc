@@ -77,10 +77,11 @@ report.week.sort=end-
 # Custom attributes
 
 urgency.annotations.coefficient=0.0 # Default 1
-urgency.tags.coefficient=0.2 # Default 1
-urgency.age.coefficient=0.5 # Default 2
-urgency.blocked.coefficient=-15 # Default: -5
-urgency.due.coefficient=10 # Default: 12.0
+urgency.tags.coefficient=0          # Default 1
+urgency.age.coefficient=0.5         # Default 2
+urgency.blocked.coefficient=-15     # Default: -5
+urgency.due.coefficient=10          # Default: 12.0
+urgency.project.coefficient=0       # Default: ????
 
 color.uda.priority.I=rgb503
 color.uda.priority.U=rgb503
@@ -93,12 +94,12 @@ urgency.uda.priority.L.coefficient=-3 # Default 1.8
 # urgency.uda.priority.H.coefficient 6.0
 
 #Sync
-taskd.certificate=~/.task/cert/private.certificate.pem
-taskd.key=~/.task/cert/private.key.pem
-taskd.ca=~/.task/cert/ca.cert.pem
-taskd.server=inthe.am:53589
-taskd.credentials=inthe_am/stefan270101/769cf0ab-fff3-4826-a0fb-c5b28492cebc
-taskd.trust=strict
+# taskd.certificate=~/.task/cert/private.certificate.pem
+# taskd.key=~/.task/cert/private.key.pem
+# taskd.ca=~/.task/cert/ca.cert.pem
+# taskd.server=inthe.am:53589
+# taskd.credentials=inthe_am/stefan270101/769cf0ab-fff3-4826-a0fb-c5b28492cebc
+# taskd.trust=strict
 
 # Files
 data.location=~/.task
@@ -119,4 +120,4 @@ include /usr/share/doc/task/rc/dark-violets-256.theme
 # include /usr/share/doc/task/rc/solarized-light-256.theme
 # include /usr/share/doc/task/rc/no-color.theme
 
-news.version=2.6.0
+news.version=3.2.0

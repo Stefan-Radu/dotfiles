@@ -22,15 +22,11 @@ append_to_path() {
 # Path stuff
 
 export GOPATH=$HOME/.go
-
 append_to_path $GOROOT/bin
 append_to_path $GOPATH/bin
 append_to_path /opt/android-sdk/platform-tools
-append_to_path /opt/flutter/bin
+append_to_path /opt/ghidra
 append_to_path ~/.local/bin
-append_to_path /home/stef/.elan/toolchains/leanprover--lean4---stable/bin
-append_to_path /home/stef/.local/share/gem/ruby/3.0.0/bin
-append_to_path /usr/lib/llvm14/bin
 
 # ZGenom - plugin manager 
 #=======================================================
@@ -90,7 +86,6 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 
 # custom vars
-export QUOTES_PATH="/home/stef/Documents/notes/quotes.txt"
 export GPG_TTY=$(tty)
 
 # taskwarrior completion
@@ -102,9 +97,15 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # history settings
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
+HISTSIZE=20000
+SAVEHIST=20000
+setopt append_history
+setopt inc_append_history
+setopt share_history
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_expire_dups_first
+setopt hist_beep
 
 # bind substring search keys
 bindkey '^[[A' history-substring-search-up
@@ -139,9 +140,9 @@ alias wiki="pushd >/dev/null && cd ~/Documents/notes && nvim -c WikiIndex && pop
 alias nb=newsboat
 alias open=xdg-open
 alias smallpdf="ps2pdf -dPDFSETTINGS=/ebook"
+alias vit="vit ready"
 # use kitty wrapper shen connecting to ssh. 
 # more here https://sw.kovidgoyal.net/kitty/kittens/ssh/
-alias ssh="kitten ssh"
 alias nmrestart="sudo systemctl restart NetworkManager"
 
 # At startup
@@ -152,7 +153,7 @@ alias nmrestart="sudo systemctl restart NetworkManager"
 # and no secondary kitty windows)
 
 if [ -z $TMUX ]; then
-    random_quote -f $QUOTES_PATH | cowsay -f tux | lolcat -F 0.2 -t 
+    randomquote -f "/home/zenbassi/Documents-stef/notes/quotes.txt" | cowsay -f tux | lolcat -F 0.2 -t 
 fi
 
 if [[ -n "$BENCHMARK" ]]; then

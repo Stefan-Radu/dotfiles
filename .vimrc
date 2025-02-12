@@ -318,6 +318,8 @@ Plug 'jasonccox/vim-wayland-clipboard'
 
 " Current chosen theme 
 Plug 'morhetz/gruvbox'
+Plug 'nyoom-engineering/oxocarbon.nvim'
+Plug 'cormacrelf/vim-colors-github'
 " Airline - cool looking status bar
 Plug 'vim-airline/vim-airline'
 
@@ -329,6 +331,8 @@ call plug#end ()
 
 " Theme
 colorscheme gruvbox
+"colorscheme oxocarbon
+"colorscheme github
 "set background=light   " Setting light mode
 hi Normal guibg=NONE ctermbg=NONE
 
