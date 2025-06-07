@@ -9,6 +9,8 @@
     "javascript.suggestionActions.enabled": false,
     "python.linting.flake8Enabled": false,
     "python.analysis.useLibraryCodeForTypes": false,
+    "pyright.inlayHints.variableTypes": false,
+    "pyright.inlayHints.parameterTypes": false,
     "pyright.reportWildcardImportFromLibrary": "none",
     "languageserver": {
         "ccls": {
