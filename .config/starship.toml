@@ -1,0 +1,7 @@
+[directory]
+style = "yellow"
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](purple)"
