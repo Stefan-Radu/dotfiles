@@ -16,7 +16,7 @@ return {
             vim.keymap.set("n", "<leader>fR", fzflua.live_grep_native)
             vim.keymap.set("n", "<leader>flr", fzflua.lsp_references)
             vim.keymap.set("n", "<leader>fld", fzflua.diagnostics_document)
-            vim.keymap.set({ "n", "i" }, "<C-f>", fzflua.complete_path)
+            vim.keymap.set("i", "<C-f>", fzflua.complete_path)
         end
     }
 }

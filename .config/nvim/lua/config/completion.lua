@@ -137,3 +137,9 @@ vim.lsp.config('lua_ls', {
   }
 })
 -- }}}
+
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('ccls')
+vim.lsp.enable('pyright')
+vim.lsp.enable('texlab')
+vim.lsp.enable('bashls')
