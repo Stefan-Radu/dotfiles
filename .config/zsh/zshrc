@@ -21,10 +21,15 @@ append_to_path() {
 
 # Path stuff
 
-export GOPATH=$HOME/.go
+export ANDROID_HOME=/opt/android-sdk/
+export ANDROID_AVD_HOME=$HOME/.android/avd/
+export GOPATH=$HOME/.go/
+
 append_to_path $GOROOT/bin
 append_to_path $GOPATH/bin
-append_to_path /opt/android-sdk/platform-tools
+append_to_path $ANDROID_HOME/platform-tools
+append_to_path $ANDROID_HOME/cmdline-tools/latest/bin/
+append_to_path $ANDROID_HOME/emulator
 append_to_path /opt/ghidra
 append_to_path ~/.local/bin
 
@@ -153,7 +158,7 @@ alias nmrestart="sudo systemctl restart NetworkManager"
 # and no secondary kitty windows)
 
 if [ -z $TMUX ]; then
-    randomquote -f "/home/zenbassi/Documents-stef/notes/quotes.txt" | cowsay -f tux | lolcat -F 0.2 -t 
+    randomquote -f "/home/zenbassi/Documents/notes/quotes.txt" | cowsay -f tux | lolcat -F 0.2 -t 
 fi
 
 if [[ -n "$BENCHMARK" ]]; then

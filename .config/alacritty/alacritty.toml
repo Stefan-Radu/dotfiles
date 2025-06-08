@@ -87,3 +87,10 @@ lines = 0
 [window.padding]
 x = 5
 y = 0
+
+[keyboard]
+
+[[keyboard.bindings]]
+key = "I"
+mods = "Control"
+chars = "\u001b[105;5u"

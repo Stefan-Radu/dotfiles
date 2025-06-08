@@ -32,6 +32,7 @@ alias.burndown=burndown.daily
 active.indicator=<
 weekstart=Monday
 dateformat=D-M-Y
+nag=
 
 # Reports
 
@@ -120,4 +121,4 @@ include /usr/share/doc/task/rc/dark-violets-256.theme
 # include /usr/share/doc/task/rc/solarized-light-256.theme
 # include /usr/share/doc/task/rc/no-color.theme
 
-news.version=3.2.0
+news.version=3.3.0

@@ -34,8 +34,9 @@ freshrss-show-special-feeds "false"
 show-read-feeds yes
 show-read-articles yes
 #auto-reload no
-#prepopulate-query-feeds yes
+prepopulate-query-feeds yes
 #refresh-on-startup yes
 reload-threads 10
 cache-file ~/.config/newsboat/cache.db
 highlight feedlist ".*0/0.." default default invis
+confirm-exit yes
