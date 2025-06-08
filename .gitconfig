@@ -12,6 +12,6 @@
 [init]
 	defaultBranch = master
 [commit]
-	template = /home/zenbassi/.vim/templates/commit-conventions.txt
+	template = $HOME/.config/nvim/templates/commit-conventions.txt
 [core]
 	editor = nvim +17 -c startinsert
