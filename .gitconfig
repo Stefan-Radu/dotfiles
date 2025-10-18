@@ -1,6 +1,7 @@
 [user]
-	email = stefan270101@gmail.com
 	name = Stefan Radu
+	signingKey = /home/zenbassi/.ssh/id_ed25519.pub
+	email = 30214214+Stefan-Radu@users.noreply.github.com
 [status]
 	showUntrackedFiles = no
 [alias]
@@ -12,6 +13,9 @@
 [init]
 	defaultBranch = master
 [commit]
-	template = $HOME/.config/nvim/templates/commit-conventions.txt
+	template = /home/zenbassi/.config/nvim/templates/commit-conventions.txt
+	gpgSign = true
 [core]
 	editor = nvim +17 -c startinsert
+[gpg]
+	format = ssh

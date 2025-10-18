@@ -37,4 +37,7 @@ vim.o.foldlevelstart = 0
 vim.o.foldmethod = 'marker'
 vim.o.foldtext = 'v:lua.require("config.folding").MyFoldText()'
 
-require('config.knap')
+-- Toggle Color Column
+
+vim.api.nvim_create_user_command("ToggleColorColumn",
+    require('config.toolong').ToggleColorColumn, {})

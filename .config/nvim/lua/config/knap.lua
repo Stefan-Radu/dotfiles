@@ -32,6 +32,7 @@ vim.api.nvim_create_user_command('KnapTogglePreview', function()
         vim.api.nvim_create_user_command('KnapStopPreview', function() knap.close_viewer() end, {})
 
         vim.keymap.set({'n', 'v', 'i'}, '<F5>', function() knap.process_once() end)
+        vim.keymap.set('n', '<leader>R', function() knap.process_once() end)
         vim.keymap.set({ 'n', 'v', 'i' },'<F6>', function() knap.forward_jump() end)
 
         -- autoclose on buffer unload
