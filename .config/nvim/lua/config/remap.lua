@@ -1,7 +1,8 @@
 local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = ";"
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", '<cmd>Oil<cr>')
 
 -- cursed
 vim.keymap.set('n', 'Q', '<Nop>')

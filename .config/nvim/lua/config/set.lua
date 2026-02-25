@@ -11,6 +11,7 @@ vim.o.shiftround = true -- Use multiples of shiftwidth when << >>
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
+vim.o.textwidth = 80 -- gw / gq will wrap at 80 width
 
 -- Wrapping
 vim.o.wrap = true
@@ -38,6 +39,5 @@ vim.o.foldmethod = 'marker'
 vim.o.foldtext = 'v:lua.require("config.folding").MyFoldText()'
 
 -- Toggle Color Column
-
 vim.api.nvim_create_user_command("ToggleColorColumn",
     require('config.toolong').ToggleColorColumn, {})

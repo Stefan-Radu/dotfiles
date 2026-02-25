@@ -50,7 +50,7 @@ return {
         opts = {
             disable_background = false,
             styles = {
-                italic = false,
+                italic = true,
                 transparency = true,
             },
         },
@@ -64,6 +64,7 @@ return {
         config = function()
             require("everforest").setup({
                 transparent_background_level = 2,
+                italics = true,
             })
         end,
     }

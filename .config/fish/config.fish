@@ -2,7 +2,7 @@ if status is-interactive
     # vars
     #=======================================================
     set -gx EDITOR nvim
-    set -gx QUOTES_PATH '~/Documents/notes/quotes.txt'
+    set -gx NOTES_PATH '~/Documents/notes/'
 
     # path stuff
     #=======================================================
@@ -32,9 +32,26 @@ if status is-interactive
 
     # Aliases
     #=======================================================
+
+    # cd to the target file's directory, then edit, then cd back
+    function cd_then_nvim
+        if test -d $argv[1]
+            set -f where $argv[1]
+            set -f what './'
+        else 
+            set -f where $(dirname $argv[1])
+            set -f what $(basename $argv[1])
+        end
+        cd $where
+        nvim $what
+        cd -
+    end
+
+    alias cvim=cd_then_nvim
     alias mv='mv -i'
     alias t=task
-    alias quotes="$EDITOR $QUOTES_PATH"
+    alias notes="cd $NOTES_PATH && $EDITOR . && cd -"
+    alias scratch="cd $NOTES_PATH && $EDITOR scratch.md && cd -"
     alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
     alias nb=newsboat
     alias open=xdg-open
